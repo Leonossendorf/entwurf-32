@@ -3,31 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hausarztpraxis Metelen · Louise Weritz, Annette Schön und Team (Entwurf)</title>
+<title>Hausarztpraxis Metelen (Entwurf)</title>
 <meta name="description" content="Unverbindlicher Entwurf für die Hausarztpraxis Metelen.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=1">
-<script>window.STAND="1";</script>
-<script src="js/main.js?v=1" defer></script>
+<link rel="preload" href="fonts/atkinson-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=2">
+<script>window.STAND="2";</script>
+<script src="js/main.js?v=2" defer></script>
 </head>
 <body>
 <a class="sprung" href="#inhalt">Zum Inhalt springen</a>
 
 <header class="kopf">
   <div class="kopf-innen">
-    <a class="marke" href="index.html" aria-label="Hausarztpraxis Metelen, zur Startseite">Hausarztpraxis <span>Metelen</span></a>
+    <a class="marke" href="index.html" aria-label="Hausarztpraxis Metelen, zur Startseite">
+      <svg viewBox="0 0 44 20" aria-hidden="true"><path d="M1 19 11 2l7 10 7-10 7 10 7-10 4 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      <span>Hausarztpraxis Metelen</span>
+    </a>
     <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="hauptmenue">Menü</button>
     <nav id="hauptmenue" class="menue" aria-label="Hauptmenü">
-      <a href="#service">Termin und Rezept</a>
-      <a href="#zeiten">Sprechzeiten</a>
-      <a href="#hausarztprogramm">Hausarztprogramm</a>
+      <a href="#praxis">Termin und Rezept</a>
+      <a href="#neubau">Neubau</a>
       <a href="#team">Team</a>
       <a href="#stellen">Stellen</a>
+      <a href="#kontakt">Kontakt</a>
     </nav>
     <button class="hilfe-knopf" type="button" aria-expanded="false" aria-controls="hilfe" data-hilfe-auf>
-      <svg viewBox="0 0 24 24" aria-hidden="true" width="26" height="26"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="6.6" r="1.7" fill="currentColor"/><path d="M5.8 9.6c2 .7 4.1 1 6.2 1s4.2-.3 6.2-1M12 10.8v4.2M12 15l-2.7 4.8M12 15l2.7 4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="6.6" r="1.7" fill="currentColor"/><path d="M5.8 9.6c2 .7 4.1 1 6.2 1s4.2-.3 6.2-1M12 10.8v4.2M12 15l-2.7 4.8M12 15l2.7 4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
       <span>Ansicht anpassen</span>
     </button>
   </div>
@@ -59,359 +62,161 @@
 <main id="inhalt">
 
 <section class="auftakt" aria-labelledby="titel">
-  <div class="auftakt-kopf">
-    <h1 id="titel">Hausarztpraxis <span>Metelen</span></h1>
-    <div class="auftakt-text">
-      <p class="vor-umzug">Aus zwei Hausarztpraxen ist eine geworden: sechs Ärztinnen und Ärzte für Metelen. Bis zum Umzug 2027 kommen Sie bitte weiter in Ihre bisherige Praxis.</p>
-      <p class="nach-umzug-text" hidden>Sechs Ärztinnen und Ärzte für Metelen, unter einem Dach im Neuen Postquartier.</p>
-      <a class="such-link pfeil" href="#stellen">Wir suchen eine Hausärztin oder einen Hausarzt</a>
-    </div>
+  <picture>
+    <source media="(max-width: 899px)" srcset="img/hero-hoch.jpg">
+    <img class="ebene" src="img/hero-breit.jpg" width="1800" height="1125" alt="Visualisierung des geplanten Neubaus im Ortskern von Metelen: ein Klinkerhaus mit vier spitzen Giebeln unter blauem Himmel." fetchpriority="high">
+  </picture>
+  <h1 id="titel"><span>Aus zwei Praxen</span> <span>wird ein Haus.</span></h1>
+  <picture>
+    <source media="(max-width: 899px)" srcset="img/hero-hoch-haus.webp">
+    <img class="ebene ebene-haus" src="img/hero-breit-haus.webp" width="1800" height="1125" alt="">
+  </picture>
+  <div class="auftakt-wege">
+    <p>Ihre Hausärztinnen und Hausärzte in Metelen, ab 2027 gemeinsam im Neuen Postquartier.</p>
+    <a class="knopf knopf-voll" href="#praxis">Termin und Rezept</a>
+    <a class="knopf-text" href="#stellen">Hausärztin oder Hausarzt gesucht</a>
+  </div>
+</section>
+
+<section id="praxis" class="wahl" aria-labelledby="h-praxis" data-wahl>
+  <div class="wahl-kopf">
+    <h2 id="h-praxis">Zu welcher Praxis gehören Sie?</h2>
+    <p>Bis zum Umzug kommen Sie bitte weiter in Ihre bisherige Praxis.</p>
   </div>
 
-  <div class="gleise">
-    <p class="gleis-marke heute vor-umzug">Heute</p>
-    <p class="gleis-marke spaeter">Ab 2027</p>
-
-    <div class="tueren">
-      <article class="tuer tuer-a vor-umzug" data-standort="wettringen" aria-labelledby="t-a">
-        <p class="tuer-art">Hauptstandort</p>
-        <h2 id="t-a">Wettringener Straße 2</h2>
-        <p class="tuer-namen">Louise Weritz, Annette Schön, Dr. Ekkehard Grützner</p>
-        <p class="status" data-status="wettringen"><span class="punkt" aria-hidden="true"></span><span class="status-text">Sprechzeiten siehe unten</span></p>
-        <ul class="tuer-wege">
-          <li><a class="knopf knopf-haupt" href="https://www.docvisit.de/kalender/brinschwitz" target="_blank" rel="noopener">Termin online</a></li>
-          <li><a class="knopf" href="https://www.hausarztpraxis-metelen.de/terminbuchung-sprechstunde/rezeptbestellung/" target="_blank" rel="noopener">Rezept</a></li>
-          <li><a class="knopf" href="https://www.hausarztpraxis-metelen.de/terminbuchung-sprechstunde/%C3%BCberweisungsbestellung/" target="_blank" rel="noopener">Überweisung</a></li>
-          <li><a class="knopf knopf-tel" href="tel:+4925569396-0">02556 9396-0</a></li>
+  <div class="tore">
+    <article class="tor tor-w" data-ort="wettringen">
+      <h3>
+        <button class="tor-knopf" type="button" aria-expanded="false" aria-controls="tor-w">
+          <span class="tor-name">Wettringener Straße 2</span>
+          <span class="tor-aerzte">Louise Weritz, Annette Schön, Dr. Ekkehard Grützner</span>
+          <span class="status" data-status="wettringen"><span class="punkt" aria-hidden="true"></span><span class="status-text">Sprechzeiten unten</span></span>
+        </button>
+      </h3>
+      <div id="tor-w" class="tor-inhalt" hidden>
+        <ul class="wege">
+          <li><a href="https://www.docvisit.de/kalender/brinschwitz" target="_blank" rel="noopener">Termin buchen</a></li>
+          <li><a href="https://www.hausarztpraxis-metelen.de/terminbuchung-sprechstunde/rezeptbestellung/" target="_blank" rel="noopener">Rezept bestellen</a></li>
+          <li><a href="https://www.hausarztpraxis-metelen.de/terminbuchung-sprechstunde/%C3%BCberweisungsbestellung/" target="_blank" rel="noopener">Überweisung bestellen</a></li>
         </ul>
-      </article>
+        <dl class="zeiten">
+          <div><dt>Mo, Di, Do</dt><dd>7:30 bis 12 und 14 bis 17 Uhr</dd></div>
+          <div><dt>Mi, Fr</dt><dd>7:30 bis 12 Uhr</dd></div>
+          <div><dt>Telefon</dt><dd><a href="tel:+4925569396-0">02556 9396-0</a></dd></div>
+        </dl>
+        <p class="tor-mehr"><a href="termin.html">So buchen Sie online</a> <a href="#kontakt" data-anliegen="neu">Neu in der Praxis</a></p>
+      </div>
+    </article>
 
-      <article class="tuer tuer-b vor-umzug" data-standort="schilden" aria-labelledby="t-b">
-        <p class="tuer-art">Zweigpraxis Ärzte am Schilden</p>
-        <h2 id="t-b">Schilden 4</h2>
-        <p class="tuer-namen">Dr. Hedwig Niehoff, Dr. Andrea Viermann, Michael Niesen</p>
-        <p class="status" data-status="schilden"><span class="punkt" aria-hidden="true"></span><span class="status-text">Sprechzeiten siehe unten</span></p>
-        <ul class="tuer-wege">
-          <li><a class="knopf knopf-haupt" href="https://www.docvisit.de/kalender/aerzte-am-schilden" target="_blank" rel="noopener">Termin online</a></li>
-          <li><a class="knopf" href="https://www.aerzte-am-schilden.de/rezeptbestellung/" target="_blank" rel="noopener">Rezept</a></li>
-          <li><a class="knopf" href="https://www.aerzte-am-schilden.de/ueberweisungsanforderung/" target="_blank" rel="noopener">Überweisung</a></li>
-          <li><a class="knopf knopf-tel" href="tel:+492556278">02556 278</a></li>
+    <article class="tor tor-s" data-ort="schilden">
+      <h3>
+        <button class="tor-knopf" type="button" aria-expanded="false" aria-controls="tor-s">
+          <span class="tor-name">Schilden 4</span>
+          <span class="tor-aerzte">Dr. Hedwig Niehoff, Dr. Andrea Viermann, Michael Niesen</span>
+          <span class="status" data-status="schilden"><span class="punkt" aria-hidden="true"></span><span class="status-text">Sprechzeiten unten</span></span>
+        </button>
+      </h3>
+      <div id="tor-s" class="tor-inhalt" hidden>
+        <ul class="wege">
+          <li><a href="https://www.docvisit.de/kalender/aerzte-am-schilden" target="_blank" rel="noopener">Termin buchen</a></li>
+          <li><a href="https://www.aerzte-am-schilden.de/rezeptbestellung/" target="_blank" rel="noopener">Rezept bestellen</a></li>
+          <li><a href="https://www.aerzte-am-schilden.de/ueberweisungsanforderung/" target="_blank" rel="noopener">Überweisung bestellen</a></li>
         </ul>
-      </article>
+        <dl class="zeiten">
+          <div><dt>Mo, Di, Do</dt><dd>7:30 bis 12 und 15 bis 18 Uhr</dd></div>
+          <div><dt>Mi, Fr</dt><dd>7:30 bis 13 Uhr</dd></div>
+          <div><dt>Telefon</dt><dd><a href="tel:+492556278">02556 278</a></dd></div>
+        </dl>
+        <p class="tor-mehr"><a href="termin.html">So buchen Sie online</a> <a href="#kontakt" data-anliegen="neu">Neu in der Praxis</a></p>
+      </div>
+    </article>
 
-      <article class="tuer tuer-neu nach-umzug-block" hidden aria-labelledby="t-n">
-        <p class="tuer-art">Ein Haus für alle</p>
-        <h2 id="t-n">Neues Postquartier</h2>
-        <p class="tuer-namen">Louise Weritz, Annette Schön, Dr. Ekkehard Grützner, Dr. Hedwig Niehoff, Dr. Andrea Viermann, Michael Niesen</p>
+    <article class="tor tor-neu" hidden>
+      <div class="tor-kopf-neu">
+        <p class="tor-name">Neues Postquartier</p>
+        <p class="tor-aerzte">Alle sechs Ärztinnen und Ärzte unter einem Dach</p>
         <p class="status"><span class="punkt" aria-hidden="true"></span><span class="status-text">Anschrift und Sprechzeiten folgen zum Umzug</span></p>
-        <ul class="tuer-wege">
-          <li><a class="knopf knopf-haupt" href="#service">Termin online</a></li>
-          <li><a class="knopf" href="#service">Rezept</a></li>
-          <li><a class="knopf" href="#service">Überweisung</a></li>
-        </ul>
-      </article>
-    </div>
-
-    <svg class="linien linien-quer" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-      <path class="linie linie-a" d="M0 0 C 62 0, 38 50, 100 50"/>
-      <path class="linie linie-b" d="M0 50 L 100 50"/>
-    </svg>
-    <svg class="linien linien-hoch" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-      <path class="linie linie-a" d="M25 0 C 25 55, 50 45, 50 100"/>
-      <path class="linie linie-b" d="M75 0 C 75 55, 50 45, 50 100"/>
-    </svg>
-
-    <figure class="neubau">
-      <img src="img/neubau-1400.jpg" srcset="img/neubau-800.jpg 800w, img/neubau-1400.jpg 1400w" sizes="(min-width: 960px) 54vw, 100vw" width="1400" height="701" alt="Visualisierung des Neubaus im Ortskern von Metelen: ein vierstöckiges Klinkerhaus mit vier spitzen Giebeln, jungen Bäumen und einem Gehweg davor.">
-      <figcaption>
-        <span><a href="#umzug">Das neue Praxisgebäude im Ortskern</a>, geplant für 2027. Visualisierung.</span>
-        <button class="vorschau" type="button" aria-pressed="false" data-vorschau>Vorschau: Website nach dem Umzug</button>
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="aktuell-band" aria-label="Aktueller Hinweis">
-  <p><strong>Grippe- und Coronaimpfung</strong> sind ab Oktober wieder möglich. <a href="#aktuelles">Mehr dazu</a></p>
-</section>
-
-<section id="service" class="abschnitt service" aria-labelledby="h-service">
-  <div class="abschnitt-kopf">
-    <h2 id="h-service">Termin, Rezept, Überweisung</h2>
-    <p>Alle drei Wege sind online rund um die Uhr offen, auch wenn die Praxis geschlossen ist.</p>
-  </div>
-  <div class="spalten">
-    <section aria-labelledby="h-termin">
-      <h3 id="h-termin">Termin</h3>
-      <p>Für Patientinnen und Patienten der Praxis. Es gibt verschiedene Terminarten, zum Beispiel Sprechstunde, Infektsprechstunde oder Check-up. Bitte bringen Sie Ihre Versichertenkarte mit.</p>
-      <p><a class="pfeil" href="termin.html">So buchen Sie Schritt für Schritt</a></p>
-    </section>
-    <section aria-labelledby="h-rezept">
-      <h3 id="h-rezept">Rezept und Überweisung</h3>
-      <p>Seit dem 01.03.2026 stellen wir beides nur noch in Ausnahmefällen zur sofortigen Mitnahme aus. Bestellen Sie online oder über den Bestellzettel in der Praxis.</p>
-      <ul class="fakten">
-        <li>E-Rezept: am nächsten Werktag in Ihrer Apotheke</li>
-        <li>Überweisung: am nächsten Werktag in der Praxis</li>
-        <li>Einmal im Quartal muss Ihre Karte eingelesen sein</li>
+      </div>
+      <ul class="wege">
+        <li><a href="#praxis">Termin buchen</a></li>
+        <li><a href="#praxis">Rezept bestellen</a></li>
+        <li><a href="#praxis">Überweisung bestellen</a></li>
       </ul>
-    </section>
-    <section aria-labelledby="h-neu">
-      <h3 id="h-neu">Neu in der Praxis?</h3>
-      <p>Online-Termine sind Bestandspatienten vorbehalten. Wenn Sie neu zu uns kommen möchten, stellen Sie bitte eine Anfrage.</p>
-      <p><a class="pfeil" href="#kontakt" data-wahl="neu">Anfrage stellen</a></p>
-    </section>
+    </article>
   </div>
+
+  <p class="notdienst">Geschlossen und es kann nicht warten: <a href="tel:116117">116&nbsp;117</a>. Bei Lebensgefahr: <a href="tel:112">112</a>. <a href="praxis.html#notfall">Alle Notfallnummern</a></p>
 </section>
 
-<section id="zeiten" class="abschnitt zeiten" aria-labelledby="h-zeiten">
-  <div class="abschnitt-kopf">
-    <h2 id="h-zeiten">Sprechzeiten und Anfahrt</h2>
-    <p class="nach-umzug-text" hidden>Vorschau: Nach dem Umzug steht hier eine einzige Tabelle.</p>
-  </div>
-  <div class="zeiten-raster">
-    <div class="tabelle-rahmen" tabindex="0" role="region" aria-labelledby="h-tabelle">
-      <table>
-        <caption id="h-tabelle">Öffnungszeiten beider Standorte</caption>
-        <thead><tr><th scope="col">Tag</th><th scope="col">Wettringener Straße 2</th><th scope="col">Schilden 4</th></tr></thead>
-        <tbody>
-          <tr data-tag="1"><th scope="row">Montag</th><td>7:30 bis 12 und 14 bis 17 Uhr</td><td>7:30 bis 12 und 15 bis 18 Uhr</td></tr>
-          <tr data-tag="2"><th scope="row">Dienstag</th><td>7:30 bis 12 und 14 bis 17 Uhr</td><td>7:30 bis 12 und 15 bis 18 Uhr</td></tr>
-          <tr data-tag="3"><th scope="row">Mittwoch</th><td>7:30 bis 12 Uhr</td><td>7:30 bis 13 Uhr</td></tr>
-          <tr data-tag="4"><th scope="row">Donnerstag</th><td>7:30 bis 12 und 14 bis 17 Uhr</td><td>7:30 bis 12 und 15 bis 18 Uhr</td></tr>
-          <tr data-tag="5"><th scope="row">Freitag</th><td>7:30 bis 12 Uhr</td><td>7:30 bis 13 Uhr</td></tr>
-        </tbody>
-      </table>
-      <ul class="zusatz">
-        <li><strong>Labor Wettringener Straße:</strong> Montag bis Freitag 7:30 bis 9 Uhr</li>
-        <li><strong>Telefon Wettringener Straße:</strong> Montag bis Freitag 8:30 bis 12 Uhr, Montag, Dienstag und Donnerstag 15 bis 17 Uhr</li>
-        <li><strong>Schilden 4:</strong> am 28.12.2026 geschlossen</li>
-      </ul>
-    </div>
-    <aside class="notfall" aria-labelledby="h-notfall">
-      <h3 id="h-notfall">Im Notfall</h3>
-      <p><a class="nummer" href="tel:112">112</a> Rettungsdienst, bei Lebensgefahr</p>
-      <p><a class="nummer" href="tel:116117">116&nbsp;117</a> Ärztlicher Bereitschaftsdienst, außerhalb der Sprechzeiten</p>
-      <p><a class="nummer klein" href="tel:+4915170207839">0151 70207839</a> Notfallnummer der Praxis, nur zu den Öffnungszeiten und bei akuten Beschwerden</p>
-    </aside>
-  </div>
-  <div class="anfahrt">
-    <section>
-      <h3 id="h-af-a">Wettringener Straße 2</h3>
-      <p>Vor dem Arzthaus sind genügend Parkplätze vorhanden. In der Nachbarschaft gibt es mehrere Einkaufsmöglichkeiten.</p>
-      <p><a class="pfeil" href="https://www.google.com/maps/search/?api=1&amp;query=Wettringener+Str.+2,+48629+Metelen" target="_blank" rel="noopener">Route öffnen</a></p>
-    </section>
-    <section>
-      <h3 id="h-af-b">Schilden 4</h3>
-      <p>Die Praxisräume sind komplett barrierefrei über einen großen Aufzug zu erreichen.</p>
-      <p><a class="pfeil" href="https://www.google.com/maps/search/?api=1&amp;query=Schilden+4,+48629+Metelen" target="_blank" rel="noopener">Route öffnen</a></p>
-    </section>
-  </div>
-</section>
-
-<section id="umzug" class="umzug" aria-labelledby="h-umzug">
-  <figure class="umzug-bild">
-    <img src="img/quartier-1600.jpg" srcset="img/quartier-900.jpg 900w, img/quartier-1600.jpg 1600w" sizes="100vw" width="1600" height="760" loading="lazy" alt="Visualisierung des Neuen Postquartiers: Klinkerbau mit Spitzgiebeln an einer Straßenecke, davor Bäume und Fußgänger.">
-    <figcaption>Neues Postquartier, Metelen. Visualisierung: Maletz &amp; Hoffstedde.</figcaption>
-  </figure>
-  <div class="umzug-innen">
-    <div class="umzug-text">
-      <h2 id="h-umzug">Ab 2027 unter einem Dach</h2>
-      <p>Bis zur Fertigstellung des Neubaus im Ortskern bleiben beide Standorte wie gewohnt bestehen. Alle Ärztinnen und Ärzte arbeiten an ihren bisherigen Standorten. Bitte kommen Sie weiter in Ihre bisherige Praxis.</p>
-      <p>Sobald Anschrift und Umzugstermin feststehen, finden Sie beides hier.</p>
-    </div>
-    <ol class="zeitleiste">
-      <li><span class="zeit">2001</span> Gemeinschaftspraxis Ärzte am Schilden gegründet</li>
-      <li><span class="zeit">01.01.2026</span> Die beiden Hausarztpraxen in Metelen werden eine Praxis</li>
-      <li><span class="zeit">01.04.2026</span> Dr. Ekkehard Grützner verstärkt das Team</li>
-      <li class="ziel"><span class="zeit">2027</span> Gemeinsamer Umzug in das neue Praxisgebäude</li>
-    </ol>
-  </div>
-</section>
-
-<section id="hausarztprogramm" class="abschnitt hzv" aria-labelledby="h-hzv">
-  <div class="hzv-text">
-    <h2 id="h-hzv">Das Hausarztprogramm</h2>
-    <p>Sie wählen Ihre Hausärztin oder Ihren Hausarzt als erste Ansprechperson für alle medizinischen Fragen. Bei uns laufen Befunde zusammen, Doppeluntersuchungen werden vermieden. Mit Ihrer Teilnahme stärken Sie die hausärztliche Versorgung in Metelen.</p>
-    <p><a class="knopf knopf-hell" href="#kontakt" data-wahl="hzv">Beim nächsten Besuch ansprechen lassen</a></p>
-  </div>
-  <dl class="hzv-fakten">
-    <div><dt>Check-up</dt><dd>alle 2 statt alle 3 Jahre</dd></div>
-    <div><dt>Labor</dt><dd>ausgiebigere Diagnostik beim Check-up</dd></div>
-    <div><dt>Einschreibung</dt><dd>für Sie kostenlos</dd></div>
-    <div><dt>Ihre Zusage</dt><dd>vor dem Facharzt eine Überweisung von uns holen, Teilnahme mindestens 12 Monate</dd></div>
-  </dl>
-</section>
-
-<section id="aktuelles" class="abschnitt aktuelles" aria-labelledby="h-aktuelles">
-  <div class="aktuelles-raster">
+<section id="neubau" class="neubau" aria-labelledby="h-neubau">
+  <img src="img/neubau-ecke-1800.jpg" srcset="img/neubau-ecke-900.jpg 900w, img/neubau-ecke-1800.jpg 1800w" sizes="100vw" width="1800" height="855" loading="lazy" alt="Visualisierung des Neuen Postquartiers: Klinkerbau mit Spitzgiebeln an einer Straßenecke, davor junge Bäume und Fußgänger.">
+  <div class="neubau-text">
+    <h2 id="h-neubau">Bald unter einem Dach.</h2>
     <div>
-      <h2 id="h-aktuelles">Aktuelles</h2>
-      <ul class="meldungen">
-        <li>
-          <p class="datum">Ab Oktober</p>
-          <h3>Grippe- und Coronaimpfung</h3>
-          <p>Termine für die Sonderimpftage sind online buchbar. Privatversicherte benötigen für die Grippeimpfung vorab ein Rezept aus der Praxis. <a href="https://www.rki.de/DE/Themen/Infektionskrankheiten/Impfen/Informationsmaterialien/Faktenblaetter-zum-Impfen/Influenza.pdf?__blob=publicationFile&amp;v=5" target="_blank" rel="noopener">RKI-Faktenblatt Grippe</a></p>
-        </li>
-        <li>
-          <p class="datum">01.04.2026</p>
-          <h3>Krankschreibung ohne SMS</h3>
-          <p>Ihre Bescheinigung geht weiterhin elektronisch an die Krankenkasse. Sie können sie in der App Ihrer Kasse einsehen. Eine SMS versenden wir nicht mehr.</p>
-        </li>
-        <li>
-          <p class="datum">Zahlung</p>
-          <h3>Bescheinigungen und IGeL-Leistungen</h3>
-          <p>Bitte direkt per EC-Karte zahlen. Überweisungen und Kreditkarten sind nicht möglich.</p>
-        </li>
-      </ul>
+      <p>Die beiden Hausarztpraxen in Metelen sind schon eine Praxis, 2027 folgt der gemeinsame Umzug. Anschrift und Termin finden Sie hier, sobald sie feststehen.</p>
+      <button class="knopf-rand" type="button" aria-pressed="false" data-vorschau>Website nach dem Umzug ansehen</button>
     </div>
-    <aside class="neu-bei-uns" aria-labelledby="h-cardio">
-      <p class="tuer-art">Neu bei uns</p>
-      <h3 id="h-cardio">Cardisiographie</h3>
-      <p>Ein EKG-Verfahren, bei dem ein KI-Algorithmus die Herzsignale auswertet, ohne Strahlenbelastung und ohne körperliche Belastung. Es kommt zum Beispiel in Frage bei:</p>
-      <ul class="fakten">
-        <li>familiärer Vorbelastung</li>
-        <li>Risikofaktoren wie Bluthochdruck, Diabetes oder erhöhten Cholesterinwerten</li>
-        <li>starker körperlicher oder beruflicher Beanspruchung</li>
-      </ul>
-      <p>Sprechen Sie uns gerne an. <a href="https://www.youtube.com/watch?v=BEILmkVP2OM" target="_blank" rel="noopener">Informationsvideo</a></p>
-    </aside>
   </div>
 </section>
 
-<section id="team" class="abschnitt team" aria-labelledby="h-team">
-  <div class="abschnitt-kopf">
-    <h2 id="h-team">Ärztinnen, Ärzte und Team</h2>
-  </div>
-  <div class="schilder">
-    <section>
-      <h3 id="h-s-a" class="schild-ort">Wettringener Straße 2</h3>
-      <ul class="aerzte">
-        <li><strong>Louise Weritz</strong> Fachärztin für Allgemeinmedizin</li>
-        <li><strong>Annette Schön</strong> Fachärztin für Allgemeinmedizin</li>
-        <li><strong>Dr. Ekkehard Grützner</strong> Facharzt für Innere Medizin</li>
-      </ul>
-    </section>
-    <section>
-      <h3 id="h-s-b" class="schild-ort">Schilden 4</h3>
-      <ul class="aerzte">
-        <li><strong>Dr. Hedwig Niehoff</strong> Ärztin für Allgemeinmedizin und Palliativmedizin</li>
-        <li><strong>Dr. Andrea Viermann</strong> Ärztin für Allgemeinmedizin und Chirotherapie</li>
-        <li><strong>Michael Niesen</strong> Arzt für Allgemeinmedizin, Chirotherapie und Sportmedizin</li>
-      </ul>
-    </section>
-  </div>
-
-  <figure class="team-bild">
-    <img src="img/beratung-1400.jpg" srcset="img/beratung-800.jpg 800w, img/beratung-1400.jpg 1400w" sizes="(min-width: 960px) 62vw, 100vw" width="1400" height="788" loading="lazy" alt="Eine Ärztin im weißen Kittel lächelt ihrer Patientin im Sprechzimmer zu.">
-    <figcaption>Im Sprechzimmer, Standort Schilden.</figcaption>
-  </figure>
-
-  <details class="praxisteam">
-    <summary>Praxisteam mit 17 Mitarbeitenden anzeigen</summary>
-    <div class="team-listen">
-      <section aria-label="Praxisteam Wettringener Straße 2">
-        <h3>Wettringener Straße 2</h3>
-        <ul>
-          <li><strong>Maike Berger</strong> Praxisorganisation, Personalmanagement</li>
-          <li><strong>Franziska Münstermann</strong> MFA, VERAH, NäPA, Abrechnung</li>
-          <li><strong>Ulrike Mühlhausen</strong> MFA, Abrechnungscontrolling, Privatabrechnung</li>
-          <li><strong>Eva Bitting</strong> Pflegefachkraft, Palliative Care</li>
-          <li><strong>Kornelia Wiechers</strong> MFA, VERAH, NäPA</li>
-          <li><strong>Ryve Holtheuer</strong> MFA, VERAH</li>
-          <li><strong>Erestina Bekteshi</strong> MFA, Tape, HZV</li>
-          <li><strong>Nicole Pieweck</strong> MFA, Tape, Hygienebeauftragte</li>
-          <li><strong>Indra Koch</strong> MFA</li>
-          <li><strong>Katrin Janning</strong> MFA</li>
-          <li><strong>Chajma Et-Ali</strong> MFA in Ausbildung</li>
-        </ul>
-      </section>
-      <section aria-label="Praxisteam Schilden 4">
-        <h3>Schilden 4</h3>
-        <ul>
-          <li><strong>Christiane Laurenz</strong></li>
-          <li><strong>Nina Borgert</strong></li>
-          <li><strong>Marie-Inès Fleige</strong></li>
-          <li><strong>Finja Wiedau</strong></li>
-          <li><strong>Cathrin Homölle</strong></li>
-          <li><strong>Petra Segeler-Mensing</strong></li>
-        </ul>
-      </section>
-    </div>
-  </details>
-
-  <div class="leistungen">
-    <h3 id="h-leistungen">Leistungen</h3>
+<section id="team" class="team" aria-labelledby="h-team">
+  <img src="img/beratung-1400.jpg" srcset="img/beratung-800.jpg 800w, img/beratung-1400.jpg 1400w" sizes="(min-width: 900px) 52vw, 100vw" width="1400" height="788" loading="lazy" alt="Eine Ärztin lächelt ihrer Patientin im Sprechzimmer zu.">
+  <div class="team-text">
+    <h2 id="h-team">Sechs Ärztinnen und Ärzte, ein Team</h2>
     <ul>
-      <li>Allgemeinmedizin und Innere Medizin</li>
-      <li>Langzeit-Blutdruck, Langzeit-EKG, Ergometrie</li>
-      <li>Lungenfunktion, Screening von Schlafatemstörungen</li>
-      <li>Kindervorsorge U2 bis U11, Jugenduntersuchung</li>
-      <li>Check-up, Hautkrebsscreening, Krebsvorsorge</li>
-      <li>Impfungen, Patientenverfügung</li>
-      <li>Ambulante Chirurgie, Chirotherapie, Orthopädie</li>
-      <li>Psychosomatische Grundversorgung, Palliativmedizin</li>
+      <li>Louise Weritz</li>
+      <li>Annette Schön</li>
+      <li>Dr. Ekkehard Grützner</li>
+      <li>Dr. Hedwig Niehoff</li>
+      <li>Dr. Andrea Viermann</li>
+      <li>Michael Niesen</li>
     </ul>
+    <a class="knopf-text" href="praxis.html">Team und Leistungen</a>
   </div>
 </section>
 
-<section id="stellen" class="abschnitt stellen" aria-labelledby="h-stellen">
-  <div class="stellen-text">
-    <p class="tuer-art">Ab sofort gesucht</p>
-    <h2 id="h-stellen">Hausärztin oder Hausarzt in Metelen</h2>
-    <p>Wir suchen eine Allgemeinmedizinerin oder einen Allgemeinmediziner zur Verstärkung unseres Teams. Lernen Sie uns bei einem Probearbeitstag kennen.</p>
+<section id="hausarztprogramm" class="hzv" aria-labelledby="h-hzv">
+  <p class="hzv-zahl" aria-hidden="true"><span>2</span> statt <span>3</span></p>
+  <div>
+    <h2 id="h-hzv">Check-up alle 2 statt alle 3 Jahre</h2>
+    <p>Das bietet Ihnen das Hausarztprogramm, dazu mehr Labordiagnostik. Die Einschreibung ist kostenlos.</p>
+    <a class="knopf knopf-voll" href="#kontakt" data-anliegen="hzv">Beim nächsten Besuch ansprechen lassen</a>
   </div>
-  <dl class="stellen-fakten">
-    <div><dt>6</dt><dd>Ärztinnen und Ärzte als Kollegium</dd></div>
-    <div><dt>17</dt><dd>Mitarbeitende, darunter VERAH, NäPA und Palliative Care</dd></div>
-    <div><dt>2027</dt><dd>Einzug in das neue Praxisgebäude im Ortskern</dd></div>
-  </dl>
-  <ul class="stellen-wege">
-    <li><a class="knopf knopf-haupt" href="#kontakt" data-wahl="bewerbung" data-stelle="arzt">Als Ärztin oder Arzt bewerben</a></li>
-    <li><a class="knopf" href="#kontakt" data-wahl="bewerbung" data-stelle="mfa">Als MFA bewerben</a></li>
-    <li><a class="knopf" href="#kontakt" data-wahl="bewerbung" data-stelle="ausbildung">Ausbildung zur MFA</a></li>
-  </ul>
 </section>
 
-<section id="kontakt" class="abschnitt kontakt" aria-labelledby="h-kontakt">
+<section id="stellen" class="stellen" aria-labelledby="h-stellen">
+  <h2 id="h-stellen">Wir suchen eine Hausärztin oder einen Hausarzt.</h2>
+  <div>
+    <p>Ab sofort, in einem Team aus 23 Menschen, ab 2027 im Neubau. Lernen Sie uns bei einem Probearbeitstag kennen.</p>
+    <a class="knopf knopf-hell" href="#kontakt" data-anliegen="bewerbung" data-stelle="arzt">Jetzt bewerben</a>
+    <a class="knopf-text" href="#kontakt" data-anliegen="bewerbung" data-stelle="mfa">Bewerbung als MFA oder zur Ausbildung</a>
+  </div>
+</section>
+
+<section id="kontakt" class="kontakt" aria-labelledby="h-kontakt">
   <div class="kontakt-text">
     <h2 id="h-kontakt">Schreiben Sie uns</h2>
-    <p>Wir melden uns bei Ihnen. Eine Telefonnummer oder E-Mail-Adresse genügt.</p>
-    <p class="warnung"><strong>Kein Notfallweg.</strong> Bitte nennen Sie hier keine Beschwerden oder Diagnosen. Im Notfall: <a href="tel:112">112</a> oder <a href="tel:116117">116&nbsp;117</a>.</p>
+    <p>Bitte keine Beschwerden nennen. Im Notfall: <a href="tel:112">112</a> oder <a href="tel:116117">116&nbsp;117</a>.</p>
   </div>
   <form class="formular" data-formular novalidate>
     <fieldset>
       <legend>Worum geht es?</legend>
       <div class="chips">
         <label><input type="radio" name="anliegen" value="neu" checked><span>Neu in der Praxis</span></label>
-        <label><input type="radio" name="anliegen" value="frage"><span>Frage an die Anmeldung</span></label>
+        <label><input type="radio" name="anliegen" value="frage"><span>Frage</span></label>
         <label><input type="radio" name="anliegen" value="hzv"><span>Hausarztprogramm</span></label>
         <label><input type="radio" name="anliegen" value="bewerbung"><span>Bewerbung</span></label>
       </div>
     </fieldset>
-
-    <fieldset data-teil="patient">
-      <legend>Welcher Standort? <span class="optional">(Angabe optional)</span></legend>
-      <div class="chips">
-        <label><input type="radio" name="standort" value="wettringen"><span>Wettringener Straße</span></label>
-        <label><input type="radio" name="standort" value="schilden"><span>Schilden</span></label>
-      </div>
-    </fieldset>
-
     <fieldset data-teil="bewerbung" hidden>
       <legend>Welche Stelle?</legend>
       <div class="chips">
         <label><input type="radio" name="stelle" value="arzt"><span>Ärztin oder Arzt</span></label>
         <label><input type="radio" name="stelle" value="mfa"><span>MFA</span></label>
         <label><input type="radio" name="stelle" value="ausbildung"><span>Ausbildung</span></label>
-        <label><input type="radio" name="stelle" value="initiativ"><span>Initiativ</span></label>
       </div>
     </fieldset>
-
     <div class="felder">
-      <div class="feld">
-        <label for="f-name">Name <span class="optional">(Angabe optional)</span></label>
-        <input id="f-name" name="name" type="text" autocomplete="name">
-      </div>
       <div class="feld">
         <label for="f-tel">Telefon</label>
         <input id="f-tel" name="telefon" type="tel" autocomplete="tel" aria-describedby="f-hinweis">
@@ -420,46 +225,37 @@
         <label for="f-mail">E-Mail</label>
         <input id="f-mail" name="mail" type="email" autocomplete="email" aria-describedby="f-hinweis">
       </div>
-      <div class="feld feld-datei" data-teil="bewerbung" hidden>
+      <div class="feld">
+        <label for="f-name">Name <span class="optional">(Angabe optional)</span></label>
+        <input id="f-name" name="name" type="text" autocomplete="name">
+      </div>
+      <div class="feld" data-teil="bewerbung" hidden>
         <label for="f-datei">Lebenslauf <span class="optional">(Angabe optional)</span></label>
         <input id="f-datei" name="datei" type="file" accept=".pdf,.doc,.docx,.jpg,.png">
       </div>
-      <div class="feld feld-breit">
-        <label for="f-text">Nachricht <span class="optional">(Angabe optional)</span></label>
-        <textarea id="f-text" name="nachricht" rows="3"></textarea>
-      </div>
     </div>
-    <p id="f-hinweis" class="hinweis">Bitte geben Sie eine Telefonnummer oder eine E-Mail-Adresse an.</p>
-    <p class="fehler" role="alert" data-fehler hidden>Damit wir Sie erreichen können, brauchen wir eine Telefonnummer oder E-Mail-Adresse.</p>
-    <button class="knopf knopf-haupt" type="submit">Absenden</button>
-    <p class="hinweis">Entwurf, wird nicht versendet.</p>
+    <p id="f-hinweis" class="hinweis">Telefon oder E-Mail genügt. Entwurf, wird nicht versendet.</p>
+    <p class="fehler" role="alert" data-fehler hidden>Bitte geben Sie eine Telefonnummer oder E-Mail-Adresse an.</p>
+    <button class="knopf knopf-voll" type="submit">Nachricht senden</button>
   </form>
   <div class="danke" data-danke tabindex="-1" hidden>
     <h3>Vielen Dank</h3>
-    <p data-danke-text>Auf der fertigen Seite käme Ihre Nachricht jetzt bei der Anmeldung an.</p>
-    <button class="knopf" type="button" data-nochmal>Neue Nachricht</button>
+    <p data-danke-text></p>
+    <button class="knopf-rand" type="button" data-nochmal>Neue Nachricht</button>
   </div>
 </section>
 
 </main>
 
 <footer class="fuss">
-  <div class="fuss-raster">
-    <div>
-      <p class="fuss-marke">Hausarztpraxis Metelen</p>
-      <p>Wettringener Straße 2, 48629 Metelen<br><a href="tel:+4925569396-0">02556 9396-0</a></p>
-      <p>Zweigpraxis Ärzte am Schilden<br>Schilden 4, 48629 Metelen<br><a href="tel:+492556278">02556 278</a></p>
+  <div class="fuss-innen">
+    <div class="fuss-spalten">
+      <p><strong>Hausarztpraxis Metelen</strong><br>Wettringener Straße 2<br>48629 Metelen<br><a href="tel:+4925569396-0">02556 9396-0</a></p>
+      <p><strong>Zweigpraxis Ärzte am Schilden</strong><br>Schilden 4<br>48629 Metelen<br><a href="tel:+492556278">02556 278</a></p>
+      <p><a href="praxis.html">Team und Leistungen</a><br><a href="impressum.html">Impressum</a><br><a href="datenschutz.html">Datenschutz</a><br><a href="barrierefreiheit.html">Barrierefreiheit</a><br><a href="leichte-sprache.html">Leichte Sprache</a></p>
     </div>
-    <div>
-      <p class="fuss-titel">Notdienst</p>
-      <p><a href="tel:116117">116&nbsp;117</a> Ärztlicher Bereitschaftsdienst<br><a href="tel:112">112</a> Rettungsdienst</p>
-    </div>
-    <div>
-      <p class="fuss-titel">Rechtliches</p>
-      <p><a href="impressum.html">Impressum</a><br><a href="datenschutz.html">Datenschutz</a><br><a href="barrierefreiheit.html">Barrierefreiheit</a><br><a href="leichte-sprache.html">Leichte Sprache</a></p>
-    </div>
+    <p class="fuss-hinweis">Unverbindlicher Entwurf von Leon Oßendorf, kein offizieller Auftritt der Hausarztpraxis Metelen. Visualisierungen: Maletz &amp; Hoffstedde. Foto: Ärzte am Schilden.</p>
   </div>
-  <p class="fuss-hinweis">Unverbindlicher Entwurf von Leon Oßendorf, kein offizieller Auftritt der Hausarztpraxis Metelen. Fotos: Ärzte am Schilden. Visualisierungen: Maletz &amp; Hoffstedde.</p>
 </footer>
 </body>
 </html>
