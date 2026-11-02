@@ -4,8 +4,10 @@
   var html = document.documentElement;
   html.classList.add("js");
 
-  function pref(k) { try { return localStorage.getItem("hm-" + k); } catch (e) { return null; } }
-  function setPref(k, v) { try { if (v === null) localStorage.removeItem("hm-" + k); else localStorage.setItem("hm-" + k, v); } catch (e) {} }
+  /* Merken: im Browser, wenn es geht, sonst nur für diese Seite */
+  var speicher = {};
+  function pref(k) { try { var v = localStorage.getItem("hm-" + k); if (v !== null) return v; } catch (e) {} return speicher[k] || null; }
+  function setPref(k, v) { speicher[k] = v; try { if (v === null) localStorage.removeItem("hm-" + k); else localStorage.setItem("hm-" + k, v); } catch (e) {} }
   function alle(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
 
   /* Stand-Check: nach einer Änderung einmal frisch laden, GitHub Pages hält Seiten 10 Minuten */
@@ -20,23 +22,13 @@
     }).catch(function () {});
   }
 
-  /* Kopf bekommt beim Scrollen eine Fläche */
-  var kopf = document.querySelector(".kopf");
-  if (document.querySelector(".auftakt")) {
-    var fest = function () { kopf.classList.toggle("fest", window.scrollY > 40); };
-    window.addEventListener("scroll", fest, { passive: true });
-    fest();
-  } else {
-    document.body.classList.add("seite-unter");
-  }
-
   /* Ansicht anpassen */
-  var hilfe = document.getElementById("hilfe"), hilfeAuf = document.querySelector("[data-hilfe-auf]");
-  if (hilfe && hilfeAuf) {
-    hilfeAuf.addEventListener("click", function () {
-      var auf = hilfe.hidden;
-      hilfe.hidden = !auf;
-      hilfeAuf.setAttribute("aria-expanded", auf ? "true" : "false");
+  var ansicht = document.getElementById("ansicht"), ansichtAuf = document.querySelector("[data-hilfe-auf]");
+  if (ansicht && ansichtAuf) {
+    ansichtAuf.addEventListener("click", function () {
+      var auf = ansicht.hidden;
+      ansicht.hidden = !auf;
+      ansichtAuf.setAttribute("aria-expanded", auf ? "true" : "false");
     });
   }
   function setzeSchrift(n) {
@@ -83,33 +75,78 @@
     alle("a", menue).forEach(function (a) { a.addEventListener("click", function () { menue.classList.remove("offen"); mk.setAttribute("aria-expanded", "false"); }); });
   }
 
-  /* Wahl der Praxis. Die Seite merkt sich die Wahl, beim nächsten Besuch ist die eigene Praxis offen. */
-  var wahl = document.querySelector("[data-wahl]");
-  function oeffne(ort, merken) {
-    if (!wahl) return;
-    var aktuell = wahl.getAttribute("data-offen");
-    var ziel = aktuell === ort ? null : ort;
-    alle(".tor[data-ort]", wahl).forEach(function (t) {
-      var an = t.getAttribute("data-ort") === ziel, k = t.querySelector(".tor-knopf");
-      t.classList.toggle("offen", an);
-      t.querySelector(".tor-inhalt").hidden = !an;
-      k.setAttribute("aria-expanded", an ? "true" : "false");
+  /* Wer gehört wohin. Eine Stelle für alle Knöpfe. */
+  var AERZTE = {
+    weritz: { name: "Frau Weritz", ort: "w" }, schoen: { name: "Frau Schön", ort: "w" }, gruetzner: { name: "Dr. Grützner", ort: "w" },
+    niehoff: { name: "Dr. Niehoff", ort: "s" }, viermann: { name: "Dr. Viermann", ort: "s" }, niesen: { name: "Herr Niesen", ort: "s" }
+  };
+  var ORTE = {
+    w: {
+      name: "Wettringener Straße",
+      termin: "https://www.docvisit.de/kalender/brinschwitz",
+      rezept: "https://www.hausarztpraxis-metelen.de/terminbuchung-sprechstunde/rezeptbestellung/",
+      ueberweisung: "https://www.hausarztpraxis-metelen.de/terminbuchung-sprechstunde/%C3%BCberweisungsbestellung/",
+      zusatz: { termin: "Kalender Wettringener Straße", rezept: "E-Rezept am nächsten Werktag", ueberweisung: "abholen am nächsten Werktag" }
+    },
+    s: {
+      name: "Schilden",
+      termin: "https://www.docvisit.de/kalender/aerzte-am-schilden",
+      rezept: "https://www.aerzte-am-schilden.de/rezeptbestellung/",
+      ueberweisung: "https://www.aerzte-am-schilden.de/ueberweisungsanforderung/",
+      zusatz: { termin: "Kalender Schilden", rezept: "E-Rezept innerhalb von 24 Stunden", ueberweisung: "Bearbeitung bis zu 24 Stunden" }
+    }
+  };
+  var STANDARD = { termin: "online buchen", rezept: "online bestellen", ueberweisung: "online bestellen" };
+  var ZUSATZ_NACH = { termin: "ein Kalender für alle", rezept: "ein Formular für alle", ueberweisung: "ein Formular für alle" };
+
+  var wahl = document.getElementById("arzt-wahl"), offeneAufgabe = null;
+  function arzt() { var a = pref("arzt"); return AERZTE[a] ? a : null; }
+  function nachUmzug() { return html.classList.contains("nach-umzug"); }
+  function zeigeWahl() {
+    var a = nachUmzug() ? null : arzt(), ort = a ? ORTE[AERZTE[a].ort] : null;
+    if (nachUmzug()) ort = ORTE.w;
+    alle("a[data-aufgabe]").forEach(function (l) {
+      var k = l.getAttribute("data-aufgabe");
+      if (!l.hasAttribute("data-hilfe")) l.setAttribute("data-hilfe", l.getAttribute("href"));
+      if (ort) { l.setAttribute("href", ort[k]); l.setAttribute("target", "_blank"); l.setAttribute("rel", "noopener"); }
+      else { l.setAttribute("href", l.getAttribute("data-hilfe")); l.removeAttribute("target"); l.removeAttribute("rel"); }
     });
-    if (ziel) wahl.setAttribute("data-offen", ziel); else wahl.removeAttribute("data-offen");
-    if (merken) setPref("ort", ziel);
+    alle("[data-zusatz]").forEach(function (z) {
+      var k = z.getAttribute("data-zusatz");
+      z.textContent = nachUmzug() ? ZUSATZ_NACH[k] : (ort ? ort.zusatz[k] : STANDARD[k]);
+    });
+    var box = document.querySelector("[data-ihre-praxis]");
+    if (box) {
+      box.hidden = !a;
+      if (a) document.querySelector("[data-ihre-praxis-name]").textContent = AERZTE[a].name + ", " + ORTE[AERZTE[a].ort].name;
+    }
   }
-  alle(".tor-knopf").forEach(function (k) {
-    k.addEventListener("click", function () { oeffne(k.closest(".tor").getAttribute("data-ort"), true); });
+  function waehle(a) {
+    setPref("arzt", a);
+    zeigeWahl();
+    if (wahl && wahl.open) wahl.close();
+    if (offeneAufgabe) { var k = offeneAufgabe; offeneAufgabe = null; window.open(ORTE[AERZTE[a].ort][k], "_blank", "noopener"); }
+  }
+  alle("[data-arzt]").forEach(function (b) { b.addEventListener("click", function () { waehle(b.getAttribute("data-arzt")); }); });
+  alle("a[data-aufgabe]").forEach(function (l) {
+    l.addEventListener("click", function (ev) {
+      if (arzt() || nachUmzug() || !wahl || !wahl.showModal) return;
+      ev.preventDefault();
+      offeneAufgabe = l.getAttribute("data-aufgabe");
+      wahl.showModal();
+    });
   });
-  var gemerkt = pref("ort");
-  if (gemerkt) oeffne(gemerkt, false);
+  if (wahl) wahl.addEventListener("close", function () { offeneAufgabe = null; });
+  var aendern = document.querySelector("[data-aendern]");
+  if (aendern) aendern.addEventListener("click", function () { offeneAufgabe = null; if (wahl.showModal) wahl.showModal(); });
 
   /* Status je Standort. Eine Quelle für beide: hier ändern, überall richtig. Stand November 2026. */
   var ZEITEN = {
-    wettringen: { 1: [[450, 720], [840, 1020]], 2: [[450, 720], [840, 1020]], 3: [[450, 720]], 4: [[450, 720], [840, 1020]], 5: [[450, 720]] },
-    schilden: { 1: [[450, 720], [900, 1080]], 2: [[450, 720], [900, 1080]], 3: [[450, 780]], 4: [[450, 720], [900, 1080]], 5: [[450, 780]] }
+    w: { 1: [[450, 720], [840, 1020]], 2: [[450, 720], [840, 1020]], 3: [[450, 720]], 4: [[450, 720], [840, 1020]], 5: [[450, 720]] },
+    s: { 1: [[450, 720], [900, 1080]], 2: [[450, 720], [900, 1080]], 3: [[450, 780]], 4: [[450, 720], [900, 1080]], 5: [[450, 780]] }
   };
-  var ZU = { wettringen: [], schilden: ["2026-12-28"] };
+  var TELEFON_W = { 1: [[510, 720], [900, 1020]], 2: [[510, 720], [900, 1020]], 3: [[510, 720]], 4: [[510, 720], [900, 1020]], 5: [[510, 720]] };
+  var ZU = { w: [], s: ["2026-12-28"] };
   var FEIERTAGE = ["2026-11-01", "2026-12-25", "2026-12-26", "2027-01-01", "2027-03-26", "2027-03-29", "2027-05-01", "2027-05-06", "2027-05-17", "2027-05-27", "2027-10-03", "2027-11-01", "2027-12-25", "2027-12-26"];
   var TAGE = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
 
@@ -121,6 +158,7 @@
     if (FEIERTAGE.indexOf(s) >= 0 || ZU[ort].indexOf(s) >= 0) return [];
     return ZEITEN[ort][d.getDay()] || [];
   }
+  function drin(b, min) { for (var k = 0; k < b.length; k++) if (min >= b[k][0] && min < b[k][1]) return b[k]; return null; }
   function naechste(ort, jetzt) {
     var d = new Date(jetzt.getFullYear(), jetzt.getMonth(), jetzt.getDate()), m = jetzt.getHours() * 60 + jetzt.getMinutes();
     for (var i = 0; i < 21; i++) {
@@ -132,44 +170,35 @@
   }
   function tagName(n) { return n.tag === 0 ? "heute" : n.tag === 1 ? "morgen" : "am " + TAGE[n.datum.getDay()]; }
   function zeigeStatus() {
-    var jetzt = berlin(), min = jetzt.getHours() * 60 + jetzt.getMinutes();
+    var jetzt = berlin(), min = jetzt.getHours() * 60 + jetzt.getMinutes(), offen = 0;
     alle("[data-status]").forEach(function (el) {
-      var ort = el.getAttribute("data-status"), b = bloecke(ort, jetzt), tx = el.querySelector(".status-text");
+      var ort = el.getAttribute("data-status"), b = bloecke(ort, jetzt), tx = el.querySelector(".status-text"), t = drin(b, min);
       el.classList.remove("offen", "pause", "zu");
-      for (var k = 0; k < b.length; k++) {
-        if (min >= b[k][0] && min < b[k][1]) {
-          el.classList.add("offen");
-          tx.textContent = "Geöffnet bis " + uhr(b[k][1]);
-          return;
-        }
-      }
+      if (t) { offen++; el.classList.add("offen"); tx.textContent = "Geöffnet bis " + uhr(t[1]); return; }
       var n = naechste(ort, jetzt);
-      if (n && n.tag === 0 && b.length && min >= b[0][1]) {
-        el.classList.add("pause");
-        tx.textContent = "Mittagspause, wieder ab " + uhr(n.von);
-        return;
-      }
+      if (n && n.tag === 0 && b.length && min >= b[0][1]) { el.classList.add("pause"); tx.textContent = "Mittagspause, wieder ab " + uhr(n.von); return; }
       el.classList.add("zu");
       tx.textContent = n ? "Geschlossen, wieder " + tagName(n) + " ab " + uhr(n.von) : "Geschlossen";
     });
+    var j = document.querySelector("[data-jetzt]");
+    if (j) {
+      var tel = FEIERTAGE.indexOf(iso(jetzt)) < 0 && drin(TELEFON_W[jetzt.getDay()] || [], min);
+      j.textContent = offen === 0 ? "Beide Praxen sind gerade geschlossen." : tel ? "Die Praxis ist gerade erreichbar." : "Die Praxis ist geöffnet, das Telefon an der Wettringener Straße ist gerade nicht besetzt.";
+    }
   }
   try { zeigeStatus(); setInterval(zeigeStatus, 60000); } catch (e) {}
 
   /* Vorschau: dieselbe Seite nach dem Umzug */
-  var vor = document.querySelector("[data-vorschau]");
-  if (vor) {
-    vor.addEventListener("click", function () {
+  var band = document.querySelector("[data-vorschau-band]");
+  alle("[data-vorschau]").forEach(function (k) {
+    k.addEventListener("click", function () {
       var an = html.classList.toggle("nach-umzug");
-      vor.setAttribute("aria-pressed", an ? "true" : "false");
-      vor.textContent = an ? "Zurück zu heute" : "Website nach dem Umzug ansehen";
-      document.querySelector(".tor-neu").hidden = !an;
-      var kopfText = document.querySelector("#h-praxis");
-      kopfText.textContent = an ? "Eine Adresse für alle" : "Zu welcher Praxis gehören Sie?";
-      var unter = document.querySelector(".wahl-kopf p");
-      unter.hidden = an;
-      if (an) wahl.scrollIntoView({ block: "start" });
+      if (band) band.hidden = !an;
+      alle(".nach-umzug-block").forEach(function (el) { el.hidden = !an; });
+      zeigeWahl();
+      window.scrollTo({ top: an ? 0 : document.getElementById("umzug").getBoundingClientRect().top + window.scrollY - 80, behavior: "auto" });
     });
-  }
+  });
 
   /* Formular mit Weichen */
   var form = document.querySelector("[data-formular]");
@@ -197,6 +226,11 @@
         if (danke && !danke.hidden) { danke.hidden = true; form.hidden = false; }
       });
     });
+    var ziel = (location.hash || "").match(/^#kontakt-(\w+)/);
+    if (ziel) {
+      var vor = form.querySelector('input[name=anliegen][value="' + ziel[1] + '"]');
+      if (vor) { vor.checked = true; weiche(); document.getElementById("kontakt").scrollIntoView(); }
+    }
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
       var tel = form.elements.telefon.value.trim(), mail = form.elements.mail.value.trim();
@@ -208,5 +242,35 @@
     document.querySelector("[data-nochmal]").addEventListener("click", function () {
       form.reset(); weiche(); danke.hidden = true; form.hidden = false; fehler.hidden = true;
     });
+  }
+
+  zeigeWahl();
+
+  /* Hilfe-Seiten: kurze Fragen, danach nur die passenden Schritte */
+  var bogen = document.querySelector("[data-fragebogen]");
+  if (bogen) {
+    var ARTEN = {
+      weritz: "Bei Frau Weritz: Sprechstunde 10min Termin", schoen: "Bei Frau Schön: Sprechstunde 10min Termin"
+    };
+    var zeige = function () {
+      var r = bogen.querySelector("input[name=arzt]:checked"), a = r ? r.value : null, ort = a ? AERZTE[a].ort : null;
+      if (a) setPref("arzt", a);
+      var f = bogen.querySelector("input[name=fall]:checked"), fall = f ? f.value : null;
+      alle("[data-nur-ort]", bogen).forEach(function (el) { el.hidden = el.getAttribute("data-nur-ort") !== ort; });
+      if (f && f.closest("[data-nur-ort]") && f.closest("[data-nur-ort]").hidden) { f.checked = false; f = null; fall = null; }
+      if (!f) {
+        var erste = alle("input[name=fall]", bogen).filter(function (i) { return !i.closest("[hidden]"); })[0];
+        if (erste && ort) { erste.checked = true; fall = erste.value; }
+      }
+      alle("[data-ort]").forEach(function (el) { el.hidden = el.getAttribute("data-ort") !== ort; });
+      alle("[data-fall]").forEach(function (el) { el.hidden = el.getAttribute("data-fall").split(" ").indexOf(fall) < 0; });
+      alle("[data-bitte]").forEach(function (el) { el.hidden = !!ort; });
+      alle("[data-sprechstunde-art]").forEach(function (el) { el.textContent = ARTEN[a] || "Bei Frau Weritz oder Frau Schön: Sprechstunde 10min Termin"; });
+      alle("[data-nur-arzt]").forEach(function (el) { el.hidden = el.getAttribute("data-nur-arzt") !== a || fall !== "sprechstunde"; });
+    };
+    alle("input", bogen).forEach(function (i) { i.addEventListener("change", zeige); });
+    var gem = arzt();
+    if (gem) { var ri = bogen.querySelector('input[name=arzt][value="' + gem + '"]'); if (ri) ri.checked = true; }
+    zeige();
   }
 })();

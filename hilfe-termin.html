@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Online einen Termin buchen: Hausarztpraxis Metelen (Entwurf)</title>
+<meta name="description" content="Unverbindlicher Entwurf für die Hausarztpraxis Metelen.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css?v=6">
+<script>window.STAND="6";</script>
+<script src="js/main.js?v=6" defer></script>
+</head>
+<body>
+<a class="sprung" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="marke" href="index.html" aria-label="Hausarztpraxis Metelen, zur Startseite">
+      <svg viewBox="0 0 44 20" aria-hidden="true"><path d="M1 19 11 2l7 10 7-10 7 10 7-10 4 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      <span>Hausarztpraxis Metelen</span>
+    </a>
+    <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="hauptmenue">Menü</button>
+    <nav id="hauptmenue" class="menue" aria-label="Hauptmenü">
+      <a href="index.html#geschlossen">Praxis geschlossen</a>
+      <a href="index.html#hilfe">Hilfe</a>
+      <a href="index.html#team">Team</a>
+      <a href="index.html#stellen">Stellen</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <button class="hilfe-knopf" type="button" aria-expanded="false" aria-controls="ansicht" data-hilfe-auf>
+      <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="6.6" r="1.7" fill="currentColor"/><path d="M5.8 9.6c2 .7 4.1 1 6.2 1s4.2-.3 6.2-1M12 10.8v4.2M12 15l-2.7 4.8M12 15l2.7 4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <span>Ansicht anpassen</span>
+    </button>
+  </div>
+  <section id="ansicht" class="ansicht" aria-label="Ansicht anpassen" hidden>
+    <div class="ansicht-innen">
+      <div class="ansicht-gruppe" role="group" aria-label="Schriftgröße">
+        <span class="ansicht-titel">Schriftgröße</span>
+        <button type="button" data-schrift="0" aria-pressed="true">Normal</button>
+        <button type="button" data-schrift="1" aria-pressed="false">Größer</button>
+        <button type="button" data-schrift="2" aria-pressed="false">Sehr groß</button>
+      </div>
+      <div class="ansicht-gruppe">
+        <span class="ansicht-titel">Darstellung</span>
+        <button type="button" data-schalter="kontrast" aria-pressed="false">Hoher Kontrast</button>
+        <button type="button" data-schalter="zeilen" aria-pressed="false">Mehr Zeilenabstand</button>
+        <button type="button" data-schalter="links" aria-pressed="false">Links hervorheben</button>
+        <button type="button" data-schalter="ruhe" aria-pressed="false">Bewegung aus</button>
+      </div>
+      <div class="ansicht-gruppe">
+        <span class="ansicht-titel">Hilfen</span>
+        <button type="button" data-vorlesen aria-pressed="false">Seite vorlesen</button>
+        <a href="leichte-sprache.html">Leichte Sprache</a>
+        <a href="barrierefreiheit.html">Erklärung zur Barrierefreiheit</a>
+      </div>
+    </div>
+  </section>
+</header>
+
+<main id="inhalt" class="seite">
+<a class="zurueck" href="index.html#hilfe">Zurück zur Hilfe</a>
+<h1>Online einen Termin buchen</h1>
+<p>Der Kalender heißt DocVisit und ist für Patientinnen und Patienten der Praxis. <a href="hilfe-neu.html">Neu in der Praxis?</a></p>
+<form class="fragebogen" data-fragebogen onsubmit="return false">
+  <fieldset>
+    <legend>Bei wem sind Sie Patient?</legend>
+    <div class="chips">
+      <label><input type="radio" name="arzt" value="weritz"><span>Louise Weritz</span></label>
+      <label><input type="radio" name="arzt" value="schoen"><span>Annette Schön</span></label>
+      <label><input type="radio" name="arzt" value="gruetzner"><span>Dr. Ekkehard Grützner</span></label>
+      <label><input type="radio" name="arzt" value="niehoff"><span>Dr. Hedwig Niehoff</span></label>
+      <label><input type="radio" name="arzt" value="viermann"><span>Dr. Andrea Viermann</span></label>
+      <label><input type="radio" name="arzt" value="niesen"><span>Michael Niesen</span></label>
+    </div>
+  </fieldset>
+  <fieldset data-nur-ort="w" hidden>
+    <legend>Worum geht es?</legend>
+    <div class="chips">
+      <label><input type="radio" name="fall" value="sprechstunde"><span>Sprechstunde</span></label>
+      <label><input type="radio" name="fall" value="infekt"><span>Infekt</span></label>
+      <label><input type="radio" name="fall" value="checkup"><span>Check-up</span></label>
+      <label><input type="radio" name="fall" value="impfung"><span>Impfung</span></label>
+      <label><input type="radio" name="fall" value="grippe"><span>Grippe oder Corona</span></label>
+      <label><input type="radio" name="fall" value="kind"><span>Kindervorsorge</span></label>
+    </div>
+  </fieldset>
+  <fieldset data-nur-ort="s" hidden>
+    <legend>Worum geht es?</legend>
+    <div class="chips">
+      <label><input type="radio" name="fall" value="akut"><span>Kurzes Anliegen</span></label>
+      <label><input type="radio" name="fall" value="sinfekt"><span>Infekt</span></label>
+      <label><input type="radio" name="fall" value="simpfung"><span>Impfung</span></label>
+      <label><input type="radio" name="fall" value="krank"><span>Krankschreibung</span></label>
+      <label><input type="radio" name="fall" value="geplant"><span>Geplanter Termin</span></label>
+    </div>
+  </fieldset>
+</form>
+<p class="bitte-waehlen" data-bitte>Bitte wählen Sie oben, dann erscheint Ihre Anleitung.</p>
+
+<section data-ort="w">
+  <p class="warnung" data-nur-arzt="gruetzner" hidden>Für Dr. Grützner gibt es im Kalender keine eigene Terminart. Bitte rufen Sie an: <a href="tel:+4925569396-0">02556 9396-0</a>. Online können Sie stattdessen bei Frau Weritz oder Frau Schön buchen:</p>
+  <p class="vorab"><strong>Erst ganz lesen.</strong> Der Knopf öffnet ein neues Fenster. Diese Anleitung bleibt offen.</p>
+  <ol class="leitfaden">
+    <li><div><h2>Kalender öffnen</h2>
+      <p><a class="knopf knopf-voll" href="https://www.docvisit.de/kalender/brinschwitz" target="_blank" rel="noopener">Kalender Wettringener Straße öffnen</a></p></div></li>
+    <li><div><h2>Terminart wählen</h2>
+      <p>Tippen Sie auf das Feld „Bitte wählen“ und wählen Sie:</p>
+      <p data-fall="sprechstunde"><strong data-sprechstunde-art>Bei Frau Weritz oder Frau Schön: Sprechstunde 10min Termin</strong>. Das ist für kurze Anliegen, zum Beispiel Gelenkbeschwerden oder ein MRT besprechen.</p>
+      <p data-fall="infekt"><strong>Infektsprechstunde</strong>, bei Husten, Schnupfen, Fieber oder Magen-Darm-Infekt. Bitte bringen Sie eine Maske mit.</p>
+      <p data-fall="checkup"><strong>Bei Frau Weritz: Check o. Patientenverfügung</strong>. Buchen Sie danach einen zweiten Termin eine Woche vorher: <strong>Labortermine nur für geplante Checkuntersuchungen</strong>.</p>
+      <p data-fall="impfung"><strong>Impfungen (FSME, MMR etc.)</strong>. Schreiben Sie unter „Bemerkung“, welche Impfung Sie möchten.</p>
+      <p data-fall="grippe"><strong>Sonderimpftage: Grippeimpfung/Coronaimpfung</strong>. Privatversicherte brauchen für die Grippeimpfung vorab ein Rezept aus der Praxis.</p>
+      <p data-fall="kind"><strong>Bei Frau Schön: Kindervorsorgeuntersuchungen U3-U11, J1, J2, GU</strong>.</p>
+      <p>Tippen Sie dann auf <strong>Termine anzeigen</strong>.</p>
+      <figure><img src="img/w-termin-art.webp" width="860" height="396" loading="lazy" alt="Beispielansicht: Das Auswahlfeld und der Knopf Termine anzeigen sind markiert."><figcaption>Beispielansicht vom 02.11.2026, Markierung ergänzt</figcaption></figure></div></li>
+    <li><div><h2>Freien Termin finden</h2>
+      <p>Sie sehen zuerst die aktuelle Woche. Steht dort „Noch 0 Termine“, ist in dieser Woche nichts frei. Das ist normal. Tippen Sie unten auf <strong>Liste der nächsten freien Termine</strong>.</p>
+      <p class="warnung">Freie Termine können einige Wochen entfernt sein. Am 02.11. war die nächste Sprechstunde bei Frau Weritz am 20.11. und bei Frau Schön am 26.11. Wenn Sie krank sind, wählen Sie die Infektsprechstunde oder rufen Sie an.</p>
+      <figure><img src="img/w-termin-woche.webp" width="874" height="402" loading="lazy" alt="Beispielansicht: Der Link Liste der nächsten freien Termine ist markiert."><figcaption>Beispielansicht vom 02.11.2026, Markierung ergänzt</figcaption></figure></div></li>
+    <li><div><h2>Uhrzeit antippen</h2>
+      <p>Die Liste zeigt die nächsten freien Tage. Tippen Sie auf die grüne Uhrzeit, die Ihnen passt.</p>
+      <figure><img src="img/w-termin-liste.webp" width="874" height="834" loading="lazy" alt="Beispielansicht: Liste freier Tage, die erste Uhrzeit ist markiert."><figcaption>Beispielansicht vom 02.11.2026, Markierung ergänzt</figcaption></figure></div></li>
+    <li><div><h2>Daten eintragen und senden</h2>
+      <p>Pflicht sind Anrede, Vorname, Nachname, Geburtsdatum, E-Mail und Mobilnummer. Ohne E-Mail oder Handy klappt die Buchung nicht, dann rufen Sie bitte an.</p>
+      <p>Setzen Sie den <strong>Haken bei der Datenschutzerklärung</strong>, lösen Sie die kleine Rechenaufgabe und tippen Sie auf <strong>Terminanfrage senden</strong>. Bitte denken Sie zum Termin an Ihre Versichertenkarte.</p>
+      <figure><img src="img/w-termin-daten.webp" width="813" height="1500" loading="lazy" alt="Beispielansicht: Der Haken bei der Datenschutzerklärung und der Knopf Terminanfrage senden sind markiert."><figcaption>Beispielansicht vom 02.11.2026, Markierung ergänzt</figcaption></figure></div></li>
+  </ol>
+</section>
+
+<section data-ort="s">
+  <p class="warnung" data-fall="simpfung">Für Impfungen brauchen Sie am Schilden derzeit keinen Termin. Kommen Sie während der Öffnungszeiten und bringen Sie Impfausweis und Versichertenkarte mit. Reiseimpfungen sprechen Sie bitte vorher ab: <a href="tel:+492556278">02556 278</a>.</p>
+  <p class="warnung" data-fall="krank">Bei milden Infekten ist eine telefonische Krankschreibung möglich. Bitte rufen Sie an: <a href="tel:+492556278">02556 278</a>.</p>
+  <p class="warnung" data-fall="geplant">Im Online-Kalender gibt es am Schilden nur die Akut- und die Infektsprechstunde. Andere Termine vereinbaren Sie bitte telefonisch: <a href="tel:+492556278">02556 278</a>.</p>
+  <div data-fall="akut sinfekt">
+  <p class="vorab"><strong>Erst ganz lesen.</strong> Der Knopf öffnet ein neues Fenster. Diese Anleitung bleibt offen.</p>
+  <ol class="leitfaden">
+    <li><div><h2>Kalender öffnen</h2>
+      <p><a class="knopf knopf-voll" href="https://www.docvisit.de/kalender/aerzte-am-schilden" target="_blank" rel="noopener">Kalender Schilden öffnen</a></p></div></li>
+    <li><div><h2>Terminart wählen</h2>
+      <p data-fall="akut">Wählen Sie <strong>Akutsprechstunde</strong>. Die Termine dauern höchstens 10 Minuten und sind für kurze Anliegen wie Rückenschmerzen.</p>
+      <p data-fall="sinfekt">Wählen Sie <strong>Infektsprechstunde</strong>, bei grippalen Symptomen oder Magen-Darm-Infekt. Bitte kommen Sie mit Maske.</p>
+      <p>Eine Arztwahl gibt es hier nicht. Tippen Sie auf <strong>Termine anzeigen</strong>.</p>
+      <figure><img src="img/s-termin-art.webp" width="860" height="352" loading="lazy" alt="Beispielansicht: Das Auswahlfeld für die Terminart ist markiert."><figcaption>Beispielansicht vom 02.11.2026, Markierung ergänzt</figcaption></figure></div></li>
+    <li><div><h2>Wenn kein Termin frei ist</h2>
+      <p>Am 02.11. standen dort „Die nächsten 0 verfügbaren Termine“. Sehen Sie das auch, ist online gerade nichts frei. Rufen Sie dann bitte an: <a href="tel:+492556278">02556 278</a>.</p>
+      <figure><img src="img/s-termin-leer.webp" width="874" height="336" loading="lazy" alt="Beispielansicht: Die Anzeige Die nächsten 0 verfügbaren Termine ist markiert."><figcaption>Beispielansicht vom 02.11.2026, Markierung ergänzt</figcaption></figure></div></li>
+    <li><div><h2>Termin wählen und senden</h2>
+      <p>Sind Uhrzeiten zu sehen, tippen Sie auf eine davon, tragen Ihre Daten ein und senden die Anfrage ab. Bitte denken Sie an Ihre Versichertenkarte.</p></div></li>
+  </ol>
+  </div>
+</section>
+</main>
+
+<footer class="fuss">
+  <div class="fuss-innen">
+    <div class="fuss-spalten">
+      <p><strong>Hausarztpraxis Metelen</strong><br>Wettringener Straße 2<br>48629 Metelen<br><a href="tel:+4925569396-0">02556 9396-0</a></p>
+      <p class="vor-umzug"><strong>Zweigpraxis Ärzte am Schilden</strong><br>Schilden 4<br>48629 Metelen<br><a href="tel:+492556278">02556 278</a></p>
+      <p><a href="praxis.html">Team und Leistungen</a><br><a href="impressum.html">Impressum</a><br><a href="datenschutz.html">Datenschutz</a><br><a href="barrierefreiheit.html">Barrierefreiheit</a><br><a href="leichte-sprache.html">Leichte Sprache</a></p>
+    </div>
+    <p class="fuss-hinweis">Unverbindlicher Entwurf von Leon Oßendorf, kein offizieller Auftritt der Hausarztpraxis Metelen. Visualisierung: Maletz &amp; Hoffstedde. Fotos: Ärzte am Schilden.</p>
+  </div>
+</footer>
+</body>
+</html>

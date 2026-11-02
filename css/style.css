@@ -1,14 +1,13 @@
 /* Hausarztpraxis Metelen, Entwurf.
-   Idee: Das Haus ist die Marke. Klinker und Himmel kommen aus dem Neubau, das Marineblau vom Schilden.
+   Idee: Die Website ist die zweite Anmeldung. Erst die Aufgabe, dann die Praxis.
+   Klinker und Himmel kommen aus dem Neubau, das Marineblau vom Schilden.
    Die Schrift Atkinson Hyperlegible wurde für Menschen mit Sehschwäche entwickelt. */
 @font-face{font-family:"Atkinson Next";src:url("../fonts/atkinson-normal.woff2") format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
-@font-face{font-family:"Atkinson Next";src:url("../fonts/atkinson-italic.woff2") format("woff2");font-weight:200 800;font-style:italic;font-display:swap}
 
 :root{
   --himmel:#dde6f1;
   --marine:#142044;
   --klinker:#6e382c;
-  --klinker-hell:#8a4e40;
   --weiss:#fff;
   --grau:#4c5468;
   --gruen:#0f6a4c;
@@ -19,136 +18,141 @@
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{font-size:var(--schrift);scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+html{font-size:var(--schrift);scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
 html.schrift-1{--schrift:22px}
 html.schrift-2{--schrift:25px}
 html.zeilen{--zeile:1.95}
 body{margin:0;background:var(--weiss);color:var(--marine);font-family:"Atkinson Next",system-ui,sans-serif;line-height:var(--zeile)}
 img{display:block;max-width:100%;height:auto}
 h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.018em;line-height:1.04;hyphens:auto;overflow-wrap:break-word;text-wrap:balance}
-h2{font-size:clamp(2.1rem,5vw,4.6rem)}
+h2{font-size:clamp(2.1rem,4.6vw,4.2rem)}
 p{margin:0 0 .8em}
-ul,dl{margin:0;padding:0;list-style:none}
+ul{margin:0;padding:0;list-style:none}
 a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
 a:hover{text-decoration-thickness:2px}
 :focus-visible{outline:3px solid var(--marine);outline-offset:3px}
-.tor :focus-visible,.stellen :focus-visible,.fuss :focus-visible,.neubau :focus-visible{outline-color:#fff}
+.tafel :focus-visible,.geschlossen :focus-visible,.stellen :focus-visible,.fuss :focus-visible,.fusion :focus-visible{outline-color:#fff}
 html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3px}
 
 .sprung{position:absolute;left:var(--rand);top:-70px;background:var(--marine);color:#fff;padding:.6em 1em;z-index:60}
 .sprung:focus{top:8px}
 
-/* Knöpfe: ein voller, ein Rand, ein Textlink. Mehr gibt es nicht. */
-.knopf{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:.5em 1.25em;font:inherit;font-weight:700;text-decoration:none;border:0;border-radius:999px;cursor:pointer;transition:background .2s,color .2s,transform .2s}
-.knopf:hover{transform:translateY(-1px)}
+/* Knöpfe */
+.knopf{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:.5em 1.25em;font:inherit;font-weight:700;text-decoration:none;border:0;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
 .knopf-voll{background:var(--marine);color:#fff}
 .knopf-voll:hover{background:var(--klinker)}
-.knopf-hell{background:#fff;color:var(--klinker)}
+.knopf-hell{background:#fff;color:var(--marine)}
 .knopf-hell:hover{background:var(--himmel)}
 .knopf-text{font-weight:700;display:inline-flex;align-items:center;min-height:44px}
-.knopf-rand{font:inherit;font-weight:700;color:inherit;background:none;border:2px solid currentColor;border-radius:999px;min-height:48px;padding:.4em 1.1em;cursor:pointer;transition:background .2s,color .2s}
-.knopf-rand:hover,.knopf-rand[aria-pressed=true]{background:#fff;border-color:#fff;color:var(--marine)}
+.knopf-rand{font:inherit;font-weight:700;color:inherit;background:none;border:2px solid currentColor;border-radius:999px;min-height:48px;padding:.4em 1.1em;cursor:pointer}
 
 /* Kopf */
-.kopf{position:fixed;inset:0 0 auto;z-index:40;color:var(--marine);transition:background .25s,box-shadow .25s}
-.kopf.fest,.kopf:has(.hilfe:not([hidden])),.seite-unter .kopf{background:#fff;box-shadow:0 1px 0 rgba(20,32,68,.14)}
-.kopf-innen{display:flex;align-items:center;gap:clamp(14px,2.2vw,34px);padding:.75rem var(--rand)}
+.kopf{position:sticky;top:0;z-index:40;background:#fff;box-shadow:0 1px 0 rgba(20,32,68,.14)}
+.kopf-innen{display:flex;align-items:center;gap:clamp(14px,2.2vw,34px);padding:.7rem var(--rand)}
 .marke{display:flex;align-items:center;gap:.55em;font-weight:800;text-decoration:none;margin-right:auto;line-height:1.1}
 .marke svg{width:38px;height:18px;flex:none}
 .menue{display:flex;gap:clamp(14px,2vw,28px)}
 .menue a{text-decoration:none;font-weight:600;font-size:.92rem;padding:.4em 0;border-bottom:2px solid transparent}
 .menue a:hover{border-bottom-color:currentColor}
-.hilfe-knopf,.menue-knopf{font:inherit;font-size:.86rem;font-weight:700;color:inherit;background:none;border:0;min-height:44px;padding:.2em .2em;display:inline-flex;align-items:center;gap:.4em;cursor:pointer}
+.hilfe-knopf,.menue-knopf{font:inherit;font-size:.86rem;font-weight:700;color:inherit;background:none;border:0;min-height:44px;padding:.2em;display:inline-flex;align-items:center;gap:.4em;cursor:pointer}
 .menue-knopf{display:none}
-.hilfe{background:#fff}
-.hilfe-innen{display:flex;flex-wrap:wrap;gap:1rem 2.4rem;padding:.4rem var(--rand) 1.2rem}
-.hilfe-gruppe{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
-.hilfe-titel{width:100%;font-size:.8rem;font-weight:700;color:var(--grau)}
-.hilfe button,.hilfe a{font:inherit;font-size:.86rem;min-height:44px;padding:.35em .9em;background:var(--himmel);color:var(--marine);border:0;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
-.hilfe button[aria-pressed=true]{background:var(--marine);color:#fff}
+.ansicht-innen{display:flex;flex-wrap:wrap;gap:1rem 2.4rem;padding:.4rem var(--rand) 1.2rem}
+.ansicht-gruppe{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
+.ansicht-titel{width:100%;font-size:.8rem;font-weight:700;color:var(--grau)}
+.ansicht button,.ansicht a{font:inherit;font-size:.86rem;min-height:44px;padding:.35em .9em;background:var(--himmel);color:var(--marine);border:0;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.ansicht button[aria-pressed=true]{background:var(--marine);color:#fff}
+.vorschau-band{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.4rem;background:var(--klinker);color:#fff;padding:.5rem var(--rand)}
+.vorschau-band p{margin:0;font-weight:700}
+.vorschau-band button{font:inherit;font-weight:700;background:#fff;color:var(--klinker);border:0;border-radius:999px;min-height:44px;padding:.2em 1.1em;cursor:pointer}
 
-/* Erstes Bild: Überschrift steht zwischen Himmel und Haus */
-.auftakt{position:relative;height:62.5vw;overflow:hidden;background:#96a9c6;isolation:isolate}
-.ebene{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 100%}
-.ebene-haus{z-index:2;pointer-events:none}
-.auftakt h1{position:absolute;z-index:1;left:var(--rand);bottom:39.2vw;font-size:8.7vw;line-height:.99;letter-spacing:-.03em;color:var(--marine);margin:0}
-.auftakt h1 span{display:block;white-space:nowrap}
-.auftakt-wege{position:absolute;z-index:3;right:var(--rand);top:6.5vw;width:23.5vw;color:var(--marine)}
-.auftakt-wege p{font-size:clamp(1rem,1.25vw,1.3rem);line-height:1.3;font-weight:600;margin-bottom:.6em}
-.auftakt-wege .knopf-text{display:flex;font-size:.84rem;line-height:1.2;min-height:36px;align-items:center}
-.js .auftakt h1 span{animation:steigt .55s cubic-bezier(.2,.7,.2,1) both}
-.js .auftakt h1 span+span{animation-delay:.07s}
-@keyframes steigt{from{transform:translateY(58%);opacity:.4}to{transform:none;opacity:1}}
+/* Erste Ansicht: die Anmeldung */
+.anmeldung{display:grid;grid-template-columns:minmax(0,7.4fr) minmax(0,4.6fr);min-height:calc(100svh - 68px)}
+.aufgaben{padding:clamp(1.5rem,3.4vw,3rem) clamp(1.5rem,4vw,4rem) clamp(1.5rem,3.4vw,3rem) var(--rand);display:flex;flex-direction:column;justify-content:center}
+.ihre-praxis{font-size:.95rem;margin:0 0 .9rem}
+.ihre-praxis button{font:inherit;font-weight:700;color:var(--klinker);background:none;border:0;text-decoration:underline;text-underline-offset:.2em;cursor:pointer;min-height:44px;padding:0 .3em}
+h1{font-size:clamp(2.6rem,5.8vw,5.4rem);letter-spacing:-.028em;margin-bottom:clamp(1rem,2.4vw,2rem)}
+.aufgaben-liste{border-top:3px solid var(--marine)}
+.aufgaben-liste li{border-bottom:3px solid var(--marine)}
+.aufgabe{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.1rem 1.4rem;padding:clamp(.7rem,1.5vw,1.25rem) .3rem;text-decoration:none;background:linear-gradient(var(--klinker),var(--klinker)) left/0 100% no-repeat;transition:background-size .28s cubic-bezier(.3,.7,.2,1),color .2s,padding .28s cubic-bezier(.3,.7,.2,1)}
+.aufgabe:hover,.aufgabe:focus-visible{background-size:100% 100%;color:#fff;padding-left:1rem;padding-right:1rem}
+.aufgabe-name{font-size:clamp(2rem,3.9vw,3.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.aufgabe-zusatz{font-size:1rem;font-weight:600}
 
-/* Wahl der Praxis: zwei Flächen, die gewählte öffnet sich */
-.wahl{padding:clamp(3.2rem,7vw,6rem) 0 clamp(2rem,4vw,3rem)}
-.wahl-kopf{padding:0 var(--rand);margin-bottom:clamp(1.6rem,3.5vw,2.8rem);max-width:60rem}
-.wahl-kopf p{margin:.7rem 0 0;font-size:1.12rem;color:var(--grau)}
-.tore{display:flex;gap:0}
-.tor{flex:1 1 50%;min-width:0;color:#fff;display:flex;flex-direction:column;transition:flex-basis .4s cubic-bezier(.3,.7,.2,1),flex-grow .4s cubic-bezier(.3,.7,.2,1)}
-.tor-w{background:var(--klinker);--tor:var(--klinker)}
-.tor-s{background:var(--marine);--tor:var(--marine)}
-.tor-neu{background:var(--klinker);padding:clamp(1.6rem,3.6vw,3.2rem) var(--rand)}
-.tor h3{font:inherit;letter-spacing:0;line-height:inherit}
-.tor-knopf{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:clamp(1.6rem,3.6vw,3.2rem) clamp(20px,3.6vw,56px) 1.4rem}
-.tor-w .tor-knopf,.tor-w .tor-inhalt{padding-left:var(--rand)}
-.tor-s .tor-knopf,.tor-s .tor-inhalt{padding-right:var(--rand)}
-.tor-name{display:block;font-size:clamp(1.9rem,3.7vw,3.3rem);font-weight:800;letter-spacing:-.018em;line-height:1.05;margin-bottom:.45rem}
-.tor-aerzte{display:block;font-size:1rem;margin-bottom:1rem;max-width:30rem}
-.tor-auf{display:inline-flex;align-items:center;gap:.55em;margin-top:1.3rem;font-weight:700}
-.tor-auf::before{content:"";width:1.5em;height:1.5em;flex:none;border-radius:50%;background:#fff linear-gradient(currentColor,currentColor);background:
-  linear-gradient(var(--tor),var(--tor)) center/.75em 2px no-repeat,linear-gradient(var(--tor),var(--tor)) center/2px .75em no-repeat,#fff;transition:transform .25s}
-.tor-knopf:hover .tor-auf::before{transform:rotate(90deg)}
-.tor.offen .tor-auf,.wahl[data-offen] .tor:not(.offen) .tor-auf{display:none}
-.tor-knopf:hover .tor-name{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:.14em}
-.status{display:flex;align-items:center;gap:.5em;font-weight:700;margin:0}
-.punkt{width:.68em;height:.68em;border-radius:50%;background:#c9d2e0;flex:none}
+.tafel{background:var(--marine);color:#fff;display:flex;flex-direction:column;gap:clamp(1.2rem,2.2vw,2rem);padding:0 var(--rand) clamp(1.4rem,2.6vw,2.4rem) clamp(1.5rem,3.6vw,3.6rem)}
+.tafel-foto{width:calc(100% + var(--rand) + clamp(1.5rem,3.6vw,3.6rem));max-width:none;margin-left:calc(clamp(1.5rem,3.6vw,3.6rem) * -1);height:clamp(150px,27vh,300px);object-fit:cover;object-position:50% 60%}
+.tafel-ort h2{font-size:clamp(1.5rem,2.3vw,2.1rem);margin-bottom:.45rem}
+.status{display:flex;align-items:center;gap:.5em;font-weight:700;font-size:1.08rem;margin:0 0 .5rem}
+.punkt{width:.72em;height:.72em;border-radius:50%;background:#c9d2e0;flex:none}
 .status.offen .punkt{background:#7be3b8}
 .status.pause .punkt{background:#f4cf7a}
 .status.zu .punkt{background:#ffb1a8}
-.tor-inhalt{padding:0 clamp(20px,3.6vw,56px) clamp(1.6rem,3vw,2.6rem)}
-.wege{display:flex;flex-wrap:wrap;gap:.55rem;margin:.2rem 0 1.5rem}
-.wege a{display:inline-flex;align-items:center;min-height:52px;padding:.5em 1.25em;background:#fff;color:var(--marine);font-weight:700;text-decoration:none;border-radius:999px;transition:background .2s}
-.wege a:hover{background:var(--himmel)}
-.zeiten>div{display:grid;grid-template-columns:7.4rem minmax(0,1fr);gap:.8rem;padding:.15rem 0}
-.zeiten dt{font-weight:700}
-.zeiten dd{margin:0}
-.tor-mehr{margin:1rem 0 0;display:flex;flex-wrap:wrap;gap:.2rem 1.6rem}
-.notdienst{padding:1.3rem var(--rand) 0;margin:0;color:var(--grau)}
-.notdienst a{color:var(--marine);font-weight:700}
-.wahl[data-offen=wettringen] .tor-w,.wahl[data-offen=schilden] .tor-s{flex:3 1 70%}
-.wahl[data-offen=wettringen] .tor-s,.wahl[data-offen=schilden] .tor-w{flex:1 1 30%}
-.wahl[data-offen] .tor:not(.offen) .tor-aerzte{display:none}
-.wahl[data-offen] .tor:not(.offen) .tor-name{font-size:clamp(1.5rem,2.4vw,2.2rem)}
+.tafel-zeiten{font-size:.9rem;line-height:1.4;margin-bottom:.4rem}
+.tafel-tel{font-weight:800;font-size:1.25rem;display:inline-flex;min-height:44px;align-items:center}
 
-/* Neubau */
-.neubau{background:var(--marine);color:#fff}
-.neubau>img{width:100%;aspect-ratio:1800/855;object-fit:cover}
-.neubau-text{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:1.4rem clamp(2rem,6vw,6rem);align-items:end;padding:clamp(2.4rem,6vw,5rem) var(--rand)}
-.neubau-text p{font-size:1.1rem}
+/* Wenn zu ist */
+.geschlossen{background:var(--himmel);padding:clamp(3rem,6.4vw,5.4rem) var(--rand)}
+.zu-kopf{margin-bottom:clamp(1.6rem,3.4vw,2.8rem);max-width:60rem}
+.zu-kopf p{margin:.7rem 0 0;font-size:1.15rem;font-weight:600;min-height:1.4em}
+.zu-raster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem clamp(2rem,6vw,6rem)}
+.zu-raster h3{font-size:clamp(1.3rem,2vw,1.7rem);margin-bottom:.8rem}
+.zu-wege a{display:flex;align-items:center;min-height:52px;font-size:1.2rem;font-weight:700;border-bottom:2px solid var(--marine);text-decoration:none;transition:padding .2s}
+.zu-wege a:hover{padding-left:.5rem}
+.nummer-zeile{margin:0 0 .9rem;font-weight:600}
+.nummer{display:block;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:800;letter-spacing:-.02em;line-height:1.05;color:var(--rot);text-decoration:none}
+.klein{font-size:.95rem}
+
+/* Hilfe und Fragen */
+.hilfe{display:grid;grid-template-columns:minmax(0,5.4fr) minmax(0,6.6fr);gap:2rem clamp(2rem,6vw,6rem);padding:clamp(3rem,6.4vw,5.4rem) var(--rand)}
+.hilfe h2{margin-bottom:1.2rem}
+.fragen-titel{font-size:clamp(1.5rem,2.3vw,2.1rem)!important;margin-bottom:.8rem}
+.hilfe-wege a{display:flex;align-items:center;min-height:60px;padding:.4rem 0;font-size:clamp(1.2rem,1.7vw,1.5rem);font-weight:800;text-decoration:none;border-bottom:3px solid var(--marine);transition:color .2s,padding .2s}
+.hilfe-wege a:hover{color:var(--klinker);padding-left:.5rem}
+.fragen details{border-bottom:2px solid var(--himmel)}
+.fragen summary{cursor:pointer;font-weight:700;padding:.75rem 2rem .75rem 0;list-style:none;position:relative;min-height:44px}
+.fragen summary::-webkit-details-marker{display:none}
+.fragen summary::after{content:"";position:absolute;right:.2rem;top:1.05rem;width:.6rem;height:.6rem;border-right:3px solid var(--klinker);border-bottom:3px solid var(--klinker);transform:rotate(45deg);transition:transform .2s}
+.fragen details[open] summary::after{transform:rotate(-135deg) translate(-4px,-4px)}
+.fragen details p{padding-bottom:.6rem}
 
 /* Team */
-.team{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:stretch}
-.team>img{width:100%;height:100%;min-height:440px;object-fit:cover;object-position:60% 40%}
-.team-text{padding:clamp(2.6rem,6vw,5rem) var(--rand);display:flex;flex-direction:column;justify-content:center;gap:1.4rem}
-.team-text h2{font-size:clamp(1.9rem,3.4vw,3.1rem)}
-.team-text li{font-size:1.28rem;font-weight:600;padding:.12rem 0}
+.team{display:grid;grid-template-columns:minmax(0,5.4fr) minmax(0,6.6fr);gap:2rem clamp(2rem,6vw,6rem);align-items:center;padding:clamp(1rem,3vw,3rem) var(--rand) clamp(3rem,6.4vw,5.4rem)}
+.team h2{margin-bottom:1.4rem}
+.team-namen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 2rem;margin-bottom:1rem}
+.team-namen h3{font-size:.95rem;font-weight:700;letter-spacing:0;margin-bottom:.3rem;color:var(--grau);hyphens:none}
+.team-namen li{font-size:1.15rem;font-weight:700;padding:.1rem 0}
+.team-fotos{margin:0}
+.team-fotos img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:60% 40%;border-radius:6px}
+.team-fotos figcaption{font-size:.86rem;color:var(--grau);padding-top:.4rem}
+
+/* Fusion: Überschrift zwischen Himmel und Haus */
+.fusion{background:var(--marine);color:#fff}
+.plakat{position:relative;height:62.5vw;overflow:hidden;background:#96a9c6;isolation:isolate}
+.ebene{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 100%}
+.ebene-haus{z-index:2;pointer-events:none}
+.plakat h2{position:absolute;z-index:1;left:var(--rand);bottom:39.2vw;font-size:8.7vw;line-height:.99;letter-spacing:-.03em;color:var(--marine)}
+.plakat h2 span{display:block;white-space:nowrap}
+.fusion-text{padding:1rem var(--rand) clamp(2.6rem,5.6vw,4.6rem)}
+.fusion-quelle{font-size:.86rem;margin-bottom:clamp(1.4rem,3vw,2.4rem)}
+.fusion-spalten{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:1.2rem clamp(2rem,6vw,6rem);align-items:center}
+.fusion-spalten p{font-size:clamp(1.15rem,1.7vw,1.5rem);line-height:1.35;font-weight:600;margin:0}
+.fusion-spalten .knopf{justify-self:start;min-height:60px;font-size:1.08rem}
 
 /* Hausarztprogramm */
-.hzv{background:var(--himmel);display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:1.6rem clamp(2rem,6vw,6rem);align-items:center;padding:clamp(3rem,7vw,6rem) var(--rand)}
+.hzv{background:var(--himmel);display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:1.6rem clamp(2rem,6vw,6rem);align-items:center;padding:clamp(3rem,6.4vw,5.4rem) var(--rand)}
 .hzv-zahl{font-size:clamp(1.6rem,3.2vw,3rem);font-weight:800;margin:0;line-height:1;letter-spacing:-.02em;white-space:nowrap}
-.hzv-zahl span{font-size:clamp(7rem,17vw,16rem);letter-spacing:-.04em;vertical-align:-.04em}
+.hzv-zahl span{font-size:clamp(6rem,14vw,13rem);letter-spacing:-.04em;vertical-align:-.04em}
 .hzv-zahl span+span{color:rgba(20,32,68,.38)}
 .hzv h2{font-size:clamp(1.9rem,3.2vw,3rem);margin-bottom:.8rem}
 .hzv p{font-size:1.12rem}
 
 /* Stellen */
-.stellen{background:var(--klinker);color:#fff;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:1.6rem clamp(2rem,6vw,6rem);align-items:end;padding:clamp(3.4rem,8vw,7rem) var(--rand)}
+.stellen{background:var(--klinker);color:#fff;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:1.6rem clamp(2rem,6vw,6rem);align-items:end;padding:clamp(3rem,7vw,6rem) var(--rand)}
 .stellen p{font-size:1.1rem}
+.stellen .knopf-hell{color:var(--klinker)}
 .stellen .knopf-text{display:flex;font-size:.95rem;margin-top:.5rem}
 
 /* Kontakt */
-.kontakt{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:2rem clamp(2rem,6vw,6rem);align-items:start;padding:clamp(3.4rem,7vw,6rem) var(--rand)}
+.kontakt{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:2rem clamp(2rem,6vw,6rem);align-items:start;padding:clamp(3rem,6.4vw,5.4rem) var(--rand)}
 .kontakt h2{margin-bottom:.8rem}
 .kontakt-text p{color:var(--grau)}
 .formular fieldset{border:0;margin:0 0 1.2rem;padding:0}
@@ -156,7 +160,7 @@ html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3
 .optional{font-weight:400;color:var(--grau)}
 .chips{display:flex;flex-wrap:wrap;gap:.45rem}
 .chips input{position:absolute;opacity:0;width:1px;height:1px}
-.chips span{display:inline-flex;align-items:center;min-height:46px;padding:.3em 1em;border-radius:999px;background:var(--himmel);cursor:pointer;font-weight:600;transition:background .2s,color .2s}
+.chips span{display:inline-flex;align-items:center;min-height:48px;padding:.3em 1em;border-radius:999px;background:var(--himmel);cursor:pointer;font-weight:600;transition:background .2s,color .2s}
 .chips input:checked+span{background:var(--marine);color:#fff}
 .chips input:focus-visible+span{outline:3px solid var(--marine);outline-offset:3px}
 .felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-bottom:.6rem}
@@ -166,7 +170,19 @@ html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3
 .fehler{color:var(--rot);font-weight:700}
 .danke{grid-column:2;background:var(--himmel);border-radius:14px;padding:1.6rem}
 .danke h3{font-size:2rem;margin-bottom:.4rem}
-.danke .knopf-rand:hover{background:var(--marine);border-color:var(--marine);color:#fff}
+
+/* Auswahl: Bei wem sind Sie Patient? */
+.wahl{border:0;padding:clamp(1.4rem,3vw,2.6rem);width:min(44rem,calc(100vw - 24px));max-height:calc(100dvh - 24px);border-radius:14px;color:var(--marine)}
+.wahl::backdrop{background:rgba(20,32,68,.62)}
+.wahl[open]{animation:wahl-auf .22s ease-out}
+@keyframes wahl-auf{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.wahl h2{font-size:clamp(1.8rem,3.4vw,2.8rem);margin:0 5rem 1.1rem 0}
+.wahl-zu{position:absolute;right:clamp(1rem,2.4vw,2rem);top:clamp(1rem,2.4vw,2rem)}
+.wahl-zu button{font:inherit;font-weight:700;font-size:.9rem;background:none;border:0;min-height:44px;color:var(--marine);text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
+.wahl-namen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.wahl-namen button{font:inherit;font-size:1.15rem;font-weight:700;text-align:left;color:var(--marine);background:var(--himmel);border:0;border-radius:10px;min-height:68px;padding:.5rem 1rem;cursor:pointer;transition:background .2s,color .2s}
+.wahl-namen button:hover{background:var(--klinker);color:#fff}
+.wahl-neu{margin:1rem 0 .2rem;font-weight:700}
 
 /* Fuß */
 .fuss{color:#fff;font-size:.95rem}
@@ -175,98 +191,89 @@ html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3
 .fuss-hinweis{margin:1.8rem 0 0;font-size:.86rem;color:#d7deea}
 
 /* Unterseiten */
-.seite{padding:clamp(6.4rem,11vw,9rem) var(--rand) clamp(3rem,6vw,5rem);max-width:64rem}
-.seite h1{font-size:clamp(2.5rem,6vw,4.8rem);margin-bottom:1.2rem}
-.seite h2{font-size:clamp(1.5rem,3vw,2.2rem);margin:2.4rem 0 .6rem}
-.seite h3{font-size:1.25rem;margin:1.2rem 0 .3rem}
+.seite{padding:clamp(2.4rem,6vw,4.4rem) var(--rand) clamp(3rem,6vw,5rem);max-width:60rem}
+.seite h1{font-size:clamp(2.4rem,5.4vw,4.4rem);margin-bottom:1rem}
+.seite h2{font-size:clamp(1.5rem,2.8vw,2.1rem);margin:2.4rem 0 .6rem}
+.seite h3{font-size:1.2rem;margin:1.2rem 0 .3rem}
+.zurueck{display:inline-flex;min-height:44px;align-items:center;font-weight:700;margin-bottom:.6rem}
 .vorab{background:var(--himmel);padding:.9rem 1.1rem;border-radius:12px;margin:1rem 0 1.6rem}
+.warnung{background:#fff;border:3px solid var(--klinker);padding:.8rem 1rem;border-radius:12px;margin:.8rem 0}
 .liste li{padding:.28rem 0}
-.liste strong{font-weight:700}
 .zwei{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 3rem}
-.nummer{display:block;font-size:2rem;font-weight:800;line-height:1.15;color:var(--rot);text-decoration:none}
+.fragebogen{background:var(--himmel);border-radius:14px;padding:1.2rem clamp(1rem,2.4vw,1.8rem) 1.4rem;margin:1.2rem 0 1.8rem}
+.fragebogen fieldset{border:0;margin:0 0 1rem;padding:0}
+.fragebogen fieldset:last-child{margin-bottom:0}
+.fragebogen legend{font-weight:800;font-size:1.1rem;padding:0;margin-bottom:.5rem}
+.fragebogen .chips span{background:#fff}
+.fragebogen .chips input:checked+span{background:var(--marine)}
 .leitfaden{counter-reset:s;list-style:none;margin:0;padding:0}
-.leitfaden>li{counter-increment:s;display:grid;grid-template-columns:4rem minmax(0,1fr);gap:0 1rem;padding:1.6rem 0}
-.leitfaden>li::before{content:counter(s);font-size:3.4rem;font-weight:800;line-height:1;color:var(--klinker)}
+.leitfaden>li{counter-increment:s;display:grid;grid-template-columns:4rem minmax(0,1fr);gap:0 1rem;padding:1.5rem 0;border-top:2px solid var(--himmel)}
+.leitfaden>li::before{content:counter(s);font-size:3.2rem;font-weight:800;line-height:1;color:var(--klinker)}
 .leitfaden h2{margin:0 0 .4rem}
-.leitfaden img{margin-top:.7rem;border-radius:10px;box-shadow:0 0 0 1px rgba(20,32,68,.16);width:100%;max-width:640px}
+.leitfaden img{margin-top:.7rem;border-radius:10px;box-shadow:0 0 0 1px rgba(20,32,68,.16);width:100%;max-width:440px;height:auto}
 .leitfaden figure{margin:0}
 .leitfaden figcaption{font-size:.84rem;color:var(--grau);padding-top:.35rem}
-.leitfaden .knopf{margin:.1rem .3rem .3rem 0}
-.terminarten{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem 2.4rem}
+.leitfaden .knopf{margin:.2rem .3rem .3rem 0}
+.bitte-waehlen{font-weight:700}
 
 /* Hoher Kontrast */
 html.kontrast{--himmel:#fff;--marine:#000;--klinker:#000;--grau:#000}
-html.kontrast .ebene{filter:contrast(1.1)}
-html.kontrast .auftakt h1,html.kontrast .auftakt-wege{background:#fff;padding:.1em .2em}
-html.kontrast .chips span,html.kontrast .hilfe button,html.kontrast .hilfe a{border:2px solid #000}
+html.kontrast .plakat h2{background:#fff;padding:.1em .2em}
+html.kontrast .chips span,html.kontrast .ansicht button,html.kontrast .ansicht a,html.kontrast .wahl-namen button,html.kontrast .fragebogen{border:2px solid #000}
 
-/* Nach-dem-Umzug-Vorschau */
-.nach-umzug .tor-w,.nach-umzug .tor-s{display:none}
-.nach-umzug .tor-neu{flex:1 1 100%}
-.nach-umzug .tor-neu .wege{margin-top:1.4rem}
+/* Vorschau nach dem Umzug */
+.nach-umzug .vor-umzug{display:none!important}
+.nach-umzug .team-namen{grid-template-columns:minmax(0,1fr)}
+.nach-umzug #umzug{display:none}
 
-/* Bewegung beim Scrollen: Die Überschrift sinkt hinter das Dach */
+/* Bewegung: Der Satz steigt beim Scrollen hinter dem Dach auf. Nichts wartet auf eine Laufzeit. */
 @media (prefers-reduced-motion:no-preference){
-  @supports (animation-timeline:scroll()){
-    html:not(.ruhe) .auftakt h1{animation:sinkt linear both;animation-timeline:scroll(root);animation-range:0 70vh}
-    @keyframes sinkt{to{transform:translateY(46%)}}
-    html:not(.ruhe) .neubau>img{animation:naeher linear both;animation-timeline:view();animation-range:entry 0% cover 60%}
-    @keyframes naeher{from{transform:scale(1.05)}to{transform:none}}
-    .neubau{overflow:hidden}
+  @supports (animation-timeline:view()){
+    html:not(.ruhe):not(.kontrast) .plakat h2{animation:steigt linear both;animation-timeline:view();animation-range:entry 10% cover 46%}
+    @keyframes steigt{from{transform:translateY(62%)}to{transform:none}}
   }
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .js .auftakt h1 span{animation:none}
   *{transition:none!important}
+  .wahl[open]{animation:none}
 }
 html.ruhe{scroll-behavior:auto}
-html.ruhe .auftakt h1 span{animation:none}
 html.ruhe *{transition:none!important}
+html.ruhe .wahl[open]{animation:none}
 
 /* Schmale Fenster */
 @media (max-width:1040px){
   .kopf-innen{flex-wrap:wrap}
+  .marke{flex:1 1 0;min-width:0}
   .menue-knopf{display:inline-flex;order:2}
   .hilfe-knopf{order:3;flex:none}
-  .marke{flex:1 1 0;min-width:0}
   .hilfe-knopf span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-  .menue{display:none;order:4;width:100%;flex-direction:column;gap:0;background:#fff;margin:.3rem calc(var(--rand) * -1) -.75rem;padding:.3rem var(--rand) .7rem;width:calc(100% + var(--rand) * 2)}
+  .menue{display:none;order:4;flex-direction:column;gap:0;margin:.3rem calc(var(--rand) * -1) -.7rem;padding:.3rem var(--rand) .7rem;width:calc(100% + var(--rand) * 2)}
   .menue.offen{display:flex}
   .menue a{padding:.6em 0;font-size:1.05rem}
 }
-@media (max-width:1199px){
-  .auftakt{height:auto;padding-top:62.5vw;background:#fff}
-  .auftakt .ebene{height:62.5vw;bottom:auto}
-  .auftakt h1{top:7vw;bottom:auto}
-  .auftakt-wege{position:static;width:auto;padding:1.4rem var(--rand) 0;background:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.6rem}
-  .auftakt-wege p{flex:1 1 100%;font-size:1.05rem;margin:0}
-  .auftakt-wege .knopf-text{font-size:.95rem}
-}
 @media (max-width:899px){
-  .auftakt{padding-top:100vw}
-  .auftakt .ebene{height:100vw}
-  .auftakt h1{top:clamp(66px,18.6vw,110px);bottom:auto;font-size:14.2vw;white-space:normal}
-  .auftakt h1 span{white-space:normal;max-width:8.4em}
-  .auftakt-wege .knopf{width:100%}
-  .tore{flex-direction:column;min-height:0}
-  .tor,.wahl[data-offen] .tor{flex:0 0 auto}
-  .tor-w .tor-knopf,.tor-w .tor-inhalt,.tor-s .tor-knopf,.tor-s .tor-inhalt,.tor-knopf,.tor-inhalt{padding-left:var(--rand);padding-right:var(--rand)}
-  .wahl[data-offen] .tor:not(.offen) .tor-aerzte{display:block}
-  .wahl[data-offen] .tor:not(.offen) .tor-name{font-size:clamp(1.9rem,3.7vw,3.3rem)}
-  .wege a{flex:1 1 100%;justify-content:center}
-  .neubau-text,.team,.hzv,.stellen,.kontakt{grid-template-columns:minmax(0,1fr)}
-  .neubau>img{aspect-ratio:16/11}
-  .team>img{min-height:0;aspect-ratio:16/10;height:auto}
+  .anmeldung{grid-template-columns:minmax(0,1fr);min-height:0}
+  .aufgaben{padding:1.3rem var(--rand) 1.6rem}
+  .aufgabe{padding-top:.75rem;padding-bottom:.75rem}
+  .tafel{padding:1.5rem var(--rand) 1.7rem}
+  .tafel-foto{display:none}
+  .plakat{height:100vw}
+  .plakat h2{bottom:auto;top:18.6vw;font-size:14.2vw}
+  .plakat h2 span{white-space:normal;max-width:8.4em}
+  .zu-raster,.hilfe,.team,.fusion-spalten,.hzv,.stellen,.kontakt{grid-template-columns:minmax(0,1fr)}
+  .team{padding-top:0}
   .danke{grid-column:1}
   .hzv-zahl span{font-size:clamp(6rem,30vw,12rem)}
 }
 @media (max-width:640px){
   .marke svg{display:none}
-  .felder,.zwei,.terminarten{grid-template-columns:minmax(0,1fr)}
+  .felder,.zwei,.team-namen{grid-template-columns:minmax(0,1fr)}
+  .wahl-namen{grid-template-columns:minmax(0,1fr)}
+  .wahl-namen button{min-height:60px}
   .fuss-spalten{grid-template-columns:minmax(0,1fr)}
   .leitfaden>li{grid-template-columns:minmax(0,1fr)}
-  .leitfaden>li::before{font-size:2.6rem;margin-bottom:.2rem}
-  .zeiten>div{grid-template-columns:minmax(0,1fr);gap:0;padding:.3rem 0}
+  .leitfaden>li::before{font-size:2.5rem;margin-bottom:.2rem}
 }
-@media print{.kopf,.hilfe{display:none}}
+@media print{.kopf{display:none}}
