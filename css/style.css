@@ -84,10 +84,10 @@ html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3
 .wahl{padding:clamp(3.2rem,7vw,6rem) 0 clamp(2rem,4vw,3rem)}
 .wahl-kopf{padding:0 var(--rand);margin-bottom:clamp(1.6rem,3.5vw,2.8rem);max-width:60rem}
 .wahl-kopf p{margin:.7rem 0 0;font-size:1.12rem;color:var(--grau)}
-.tore{display:flex;gap:0;min-height:clamp(300px,30vw,440px)}
+.tore{display:flex;gap:0}
 .tor{flex:1 1 50%;min-width:0;color:#fff;display:flex;flex-direction:column;transition:flex-basis .4s cubic-bezier(.3,.7,.2,1),flex-grow .4s cubic-bezier(.3,.7,.2,1)}
-.tor-w{background:var(--klinker)}
-.tor-s{background:var(--marine)}
+.tor-w{background:var(--klinker);--tor:var(--klinker)}
+.tor-s{background:var(--marine);--tor:var(--marine)}
 .tor-neu{background:var(--klinker);padding:clamp(1.6rem,3.6vw,3.2rem) var(--rand)}
 .tor h3{font:inherit;letter-spacing:0;line-height:inherit}
 .tor-knopf{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:clamp(1.6rem,3.6vw,3.2rem) clamp(20px,3.6vw,56px) 1.4rem}
@@ -95,6 +95,11 @@ html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3
 .tor-s .tor-knopf,.tor-s .tor-inhalt{padding-right:var(--rand)}
 .tor-name{display:block;font-size:clamp(1.9rem,3.7vw,3.3rem);font-weight:800;letter-spacing:-.018em;line-height:1.05;margin-bottom:.45rem}
 .tor-aerzte{display:block;font-size:1rem;margin-bottom:1rem;max-width:30rem}
+.tor-auf{display:inline-flex;align-items:center;gap:.55em;margin-top:1.3rem;font-weight:700}
+.tor-auf::before{content:"";width:1.5em;height:1.5em;flex:none;border-radius:50%;background:#fff linear-gradient(currentColor,currentColor);background:
+  linear-gradient(var(--tor),var(--tor)) center/.75em 2px no-repeat,linear-gradient(var(--tor),var(--tor)) center/2px .75em no-repeat,#fff;transition:transform .25s}
+.tor-knopf:hover .tor-auf::before{transform:rotate(90deg)}
+.tor.offen .tor-auf,.wahl[data-offen] .tor:not(.offen) .tor-auf{display:none}
 .tor-knopf:hover .tor-name{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:.14em}
 .status{display:flex;align-items:center;gap:.5em;font-weight:700;margin:0}
 .punkt{width:.68em;height:.68em;border-radius:50%;background:#c9d2e0;flex:none}
