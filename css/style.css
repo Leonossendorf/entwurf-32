@@ -1,5 +1,5 @@
 /* Hausarztpraxis Metelen, Entwurf.
-   Idee: Die Website ist die zweite Anmeldung. Erst die Aufgabe, dann die Praxis.
+   Idee: Eine große Praxis für alle Anliegen, die auf den Umzug vorbereitet ist.
    Klinker und Himmel kommen aus dem Neubau, das Marineblau vom Schilden.
    Die Schrift Atkinson Hyperlegible wurde für Menschen mit Sehschwäche entwickelt. */
 @font-face{font-family:"Atkinson Next";src:url("../fonts/atkinson-normal.woff2") format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
@@ -24,14 +24,15 @@ html.schrift-2{--schrift:25px}
 html.zeilen{--zeile:1.95}
 body{margin:0;background:var(--weiss);color:var(--marine);font-family:"Atkinson Next",system-ui,sans-serif;line-height:var(--zeile)}
 img{display:block;max-width:100%;height:auto}
-h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.018em;line-height:1.04;hyphens:auto;overflow-wrap:break-word;text-wrap:balance}
-h2{font-size:clamp(2.1rem,4.6vw,4.2rem)}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.018em;line-height:1.06;hyphens:auto;overflow-wrap:break-word;text-wrap:balance}
+h2{font-size:clamp(2rem,4.2vw,3.6rem)}
+h3{font-size:clamp(1.25rem,1.9vw,1.6rem)}
 p{margin:0 0 .8em}
 ul{margin:0;padding:0;list-style:none}
 a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
 a:hover{text-decoration-thickness:2px}
 :focus-visible{outline:3px solid var(--marine);outline-offset:3px}
-.tafel :focus-visible,.geschlossen :focus-visible,.stellen :focus-visible,.fuss :focus-visible,.fusion :focus-visible{outline-color:#fff}
+.tafel :focus-visible,.stellen :focus-visible,.fuss :focus-visible,.fusion :focus-visible{outline-color:#fff}
 html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3px}
 
 .sprung{position:absolute;left:var(--rand);top:-70px;background:var(--marine);color:#fff;padding:.6em 1em;z-index:60}
@@ -43,8 +44,9 @@ html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3
 .knopf-voll:hover{background:var(--klinker)}
 .knopf-hell{background:#fff;color:var(--marine)}
 .knopf-hell:hover{background:var(--himmel)}
+.knopf-rand{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
+.knopf-rand:hover{background:var(--marine);color:#fff;box-shadow:inset 0 0 0 2px var(--marine)}
 .knopf-text{font-weight:700;display:inline-flex;align-items:center;min-height:44px}
-.knopf-rand{font:inherit;font-weight:700;color:inherit;background:none;border:2px solid currentColor;border-radius:999px;min-height:48px;padding:.4em 1.1em;cursor:pointer}
 
 /* Kopf */
 .kopf{position:sticky;top:0;z-index:40;background:#fff;box-shadow:0 1px 0 rgba(20,32,68,.14)}
@@ -53,7 +55,7 @@ html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3
 .marke svg{width:38px;height:18px;flex:none}
 .menue{display:flex;gap:clamp(14px,2vw,28px)}
 .menue a{text-decoration:none;font-weight:600;font-size:.92rem;padding:.4em 0;border-bottom:2px solid transparent}
-.menue a:hover{border-bottom-color:currentColor}
+.menue a:hover,.menue a[aria-current]{border-bottom-color:currentColor}
 .hilfe-knopf,.menue-knopf{font:inherit;font-size:.86rem;font-weight:700;color:inherit;background:none;border:0;min-height:44px;padding:.2em;display:inline-flex;align-items:center;gap:.4em;cursor:pointer}
 .menue-knopf{display:none}
 .ansicht-innen{display:flex;flex-wrap:wrap;gap:1rem 2.4rem;padding:.4rem var(--rand) 1.2rem}
@@ -65,48 +67,83 @@ html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3
 .vorschau-band p{margin:0;font-weight:700}
 .vorschau-band button{font:inherit;font-weight:700;background:#fff;color:var(--klinker);border:0;border-radius:999px;min-height:44px;padding:.2em 1.1em;cursor:pointer}
 
-/* Erste Ansicht: die Anmeldung */
-.anmeldung{display:grid;grid-template-columns:minmax(0,7.4fr) minmax(0,4.6fr);min-height:calc(100svh - 68px)}
-.aufgaben{padding:clamp(1.5rem,3.4vw,3rem) clamp(1.5rem,4vw,4rem) clamp(1.5rem,3.4vw,3rem) var(--rand);display:flex;flex-direction:column;justify-content:center}
-.ihre-praxis{font-size:.95rem;margin:0 0 .9rem}
-.ihre-praxis button{font:inherit;font-weight:700;color:var(--klinker);background:none;border:0;text-decoration:underline;text-underline-offset:.2em;cursor:pointer;min-height:44px;padding:0 .3em}
-h1{font-size:clamp(2.6rem,5.8vw,5.4rem);letter-spacing:-.028em;margin-bottom:clamp(1rem,2.4vw,2rem)}
+/* Empfang: Haus als erstes Bild, der Gruß steht zwischen Himmel und Dach */
+.plakat{position:relative;height:62.5vw;overflow:hidden;background:#96a9c6;isolation:isolate}
+.ebene{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 100%}
+.ebene-haus{z-index:2;pointer-events:none}
+.plakat h1{position:absolute;z-index:1;left:var(--rand);bottom:39.6vw;font-size:6.3vw;line-height:1;letter-spacing:-.03em;color:var(--marine);margin:0}
+.plakat h1 span{display:block;white-space:nowrap}
+.js .plakat h1 span{animation:steigt .6s cubic-bezier(.2,.7,.2,1) both}
+.js .plakat h1 span+span{animation-delay:.08s}
+@keyframes steigt{from{transform:translateY(55%);opacity:.3}to{transform:none;opacity:1}}
+.empfang-text{position:absolute;z-index:3;right:var(--rand);top:4.6vw;width:min(25vw,360px);color:var(--marine)}
+.empfang-zeile{font-weight:800;font-size:clamp(1rem,1.35vw,1.4rem);line-height:1.3;margin-bottom:.7em}
+.empfang-knoepfe{display:flex;flex-wrap:wrap;gap:.5rem;margin:0}
+.empfang-knoepfe .knopf{min-height:48px;font-size:.95rem}
+.empfang-unten{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:.4rem clamp(2rem,6vw,6rem);align-items:start;padding:1.1rem var(--rand) 0}
+.empfang-satz{font-size:clamp(1.05rem,1.35vw,1.3rem);line-height:1.45;margin:0;max-width:40rem}
+.plakat-quelle{font-size:.8rem;color:var(--grau);margin:0;text-align:right;padding-top:.3rem}
+
+/* Termin, Rezept, Überweisung mit Tafel */
+.service{display:grid;grid-template-columns:minmax(0,7.2fr) minmax(0,4.8fr);padding-top:clamp(2rem,4vw,3.6rem)}
+.aufgaben{padding:0 clamp(1.5rem,4vw,4rem) clamp(2rem,4vw,3.6rem) var(--rand)}
+.service-zeile{color:var(--grau);margin:.6rem 0 1.4rem;max-width:34rem}
 .aufgaben-liste{border-top:3px solid var(--marine)}
 .aufgaben-liste li{border-bottom:3px solid var(--marine)}
-.aufgabe{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.1rem 1.4rem;padding:clamp(.7rem,1.5vw,1.25rem) .3rem;text-decoration:none;background:linear-gradient(var(--klinker),var(--klinker)) left/0 100% no-repeat;transition:background-size .28s cubic-bezier(.3,.7,.2,1),color .2s,padding .28s cubic-bezier(.3,.7,.2,1)}
+.aufgabe{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.1rem 1.4rem;padding:clamp(.65rem,1.3vw,1.1rem) .3rem;text-decoration:none;background:linear-gradient(var(--klinker),var(--klinker)) left/0 100% no-repeat;transition:background-size .28s cubic-bezier(.3,.7,.2,1),color .2s,padding .28s cubic-bezier(.3,.7,.2,1)}
 .aufgabe:hover,.aufgabe:focus-visible{background-size:100% 100%;color:#fff;padding-left:1rem;padding-right:1rem}
-.aufgabe-name{font-size:clamp(2rem,3.9vw,3.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.aufgabe-name{font-size:clamp(1.8rem,3.4vw,3.1rem);font-weight:800;letter-spacing:-.02em;line-height:1.05}
 .aufgabe-zusatz{font-size:1rem;font-weight:600}
-
-.tafel{background:var(--marine);color:#fff;display:flex;flex-direction:column;gap:clamp(1.2rem,2.2vw,2rem);padding:0 var(--rand) clamp(1.4rem,2.6vw,2.4rem) clamp(1.5rem,3.6vw,3.6rem)}
-.tafel-foto{width:calc(100% + var(--rand) + clamp(1.5rem,3.6vw,3.6rem));max-width:none;margin-left:calc(clamp(1.5rem,3.6vw,3.6rem) * -1);height:clamp(150px,27vh,300px);object-fit:cover;object-position:50% 60%}
-.tafel-ort h2{font-size:clamp(1.5rem,2.3vw,2.1rem);margin-bottom:.45rem}
-.status{display:flex;align-items:center;gap:.5em;font-weight:700;font-size:1.08rem;margin:0 0 .5rem}
+.tafel{background:var(--marine);color:#fff;display:flex;flex-direction:column;justify-content:center;gap:clamp(1.2rem,2.2vw,2rem);padding:clamp(1.6rem,3vw,2.6rem) var(--rand) clamp(1.6rem,3vw,2.6rem) clamp(1.5rem,3.6vw,3.6rem)}
+.tafel h3{font-size:clamp(1.4rem,2.1vw,1.9rem);margin-bottom:.4rem}
+.status{display:flex;align-items:center;gap:.5em;font-weight:700;font-size:1.05rem;margin:0 0 .45rem}
 .punkt{width:.72em;height:.72em;border-radius:50%;background:#c9d2e0;flex:none}
 .status.offen .punkt{background:#7be3b8}
 .status.pause .punkt{background:#f4cf7a}
 .status.zu .punkt{background:#ffb1a8}
-.tafel-zeiten{font-size:.9rem;line-height:1.4;margin-bottom:.4rem}
-.tafel-tel{font-weight:800;font-size:1.25rem;display:inline-flex;min-height:44px;align-items:center}
+.tafel-zeiten{font-size:.9rem;line-height:1.4;margin-bottom:.35rem}
+.tafel-tel{font-weight:800;font-size:1.2rem;display:inline-flex;min-height:44px;align-items:center}
+.tafel-fuss{margin:0;font-size:.92rem}
+
+/* Abschnitte */
+.abschnitt-kopf{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:.6rem clamp(2rem,6vw,6rem);align-items:end;margin-bottom:clamp(1.6rem,3.2vw,2.6rem)}
+.abschnitt-kopf p{margin:0;color:var(--grau);font-size:1.05rem}
+.abschnitt-kopf a{color:var(--marine);font-weight:700}
+
+/* Leistungen: Bilder tragen, kein Kartenrahmen */
+.leistungen{padding:clamp(3rem,6.4vw,5.4rem) var(--rand) clamp(2rem,4vw,3rem)}
+.leistungs-raster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.6rem,3vw,2.6rem) clamp(1.2rem,2.4vw,2.2rem)}
+.leistungs-raster a{display:block;text-decoration:none}
+.leistungs-raster img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:6px;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.leistungs-raster a:hover img{transform:scale(1.02)}
+.l-titel{display:block;font-size:clamp(1.3rem,1.8vw,1.6rem);font-weight:800;letter-spacing:-.015em;margin:.7rem 0 .15rem;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:.2em;transition:text-decoration-color .2s}
+.leistungs-raster a:hover .l-titel{text-decoration-color:var(--klinker)}
+.l-zeile{display:block;font-size:.95rem;color:var(--grau)}
+.leistungs-hinweis{font-size:.82rem;color:var(--grau);margin:1.4rem 0 0}
+
+/* Team */
+.team{padding:clamp(3rem,6.4vw,5.4rem) var(--rand)}
+.personen{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1.2rem}
+.personen li{font-size:.9rem;color:var(--grau);line-height:1.35;min-width:0;overflow-wrap:anywhere}
+.personen strong{display:block;color:var(--marine);font-size:1.05rem;margin:.6rem 0 .1rem}
+.personen .ort{display:block;font-size:.82rem;margin-top:.25rem}
+.portrait{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%}
+.portrait.leer{display:flex;align-items:center;justify-content:center;background:var(--himmel);color:var(--marine);font-weight:800;font-size:clamp(1.6rem,2.6vw,2.4rem);letter-spacing:.02em}
 
 /* Wenn zu ist */
 .geschlossen{background:var(--himmel);padding:clamp(3rem,6.4vw,5.4rem) var(--rand)}
 .zu-kopf{margin-bottom:clamp(1.6rem,3.4vw,2.8rem);max-width:60rem}
 .zu-kopf p{margin:.7rem 0 0;font-size:1.15rem;font-weight:600;min-height:1.4em}
 .zu-raster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem clamp(2rem,6vw,6rem)}
-.zu-raster h3{font-size:clamp(1.3rem,2vw,1.7rem);margin-bottom:.8rem}
+.zu-raster h3{margin-bottom:.8rem}
 .zu-wege a{display:flex;align-items:center;min-height:52px;font-size:1.2rem;font-weight:700;border-bottom:2px solid var(--marine);text-decoration:none;transition:padding .2s}
 .zu-wege a:hover{padding-left:.5rem}
 .nummer-zeile{margin:0 0 .9rem;font-weight:600}
 .nummer{display:block;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:800;letter-spacing:-.02em;line-height:1.05;color:var(--rot);text-decoration:none}
 .klein{font-size:.95rem}
 
-/* Hilfe und Fragen */
-.hilfe{display:grid;grid-template-columns:minmax(0,5.4fr) minmax(0,6.6fr);gap:2rem clamp(2rem,6vw,6rem);padding:clamp(3rem,6.4vw,5.4rem) var(--rand)}
-.hilfe h2{margin-bottom:1.2rem}
-.fragen-titel{font-size:clamp(1.5rem,2.3vw,2.1rem)!important;margin-bottom:.8rem}
-.hilfe-wege a{display:flex;align-items:center;min-height:60px;padding:.4rem 0;font-size:clamp(1.2rem,1.7vw,1.5rem);font-weight:800;text-decoration:none;border-bottom:3px solid var(--marine);transition:color .2s,padding .2s}
-.hilfe-wege a:hover{color:var(--klinker);padding-left:.5rem}
+/* Fragen */
+.fragen-abschnitt{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:1.4rem clamp(2rem,6vw,6rem);padding:clamp(3rem,6.4vw,5.4rem) var(--rand)}
 .fragen details{border-bottom:2px solid var(--himmel)}
 .fragen summary{cursor:pointer;font-weight:700;padding:.75rem 2rem .75rem 0;list-style:none;position:relative;min-height:44px}
 .fragen summary::-webkit-details-marker{display:none}
@@ -114,28 +151,12 @@ h1{font-size:clamp(2.6rem,5.8vw,5.4rem);letter-spacing:-.028em;margin-bottom:cla
 .fragen details[open] summary::after{transform:rotate(-135deg) translate(-4px,-4px)}
 .fragen details p{padding-bottom:.6rem}
 
-/* Team */
-.team{display:grid;grid-template-columns:minmax(0,5.4fr) minmax(0,6.6fr);gap:2rem clamp(2rem,6vw,6rem);align-items:center;padding:clamp(1rem,3vw,3rem) var(--rand) clamp(3rem,6.4vw,5.4rem)}
-.team h2{margin-bottom:1.4rem}
-.team-namen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 2rem;margin-bottom:1rem}
-.team-namen h3{font-size:.95rem;font-weight:700;letter-spacing:0;margin-bottom:.3rem;color:var(--grau);hyphens:none}
-.team-namen li{font-size:1.15rem;font-weight:700;padding:.1rem 0}
-.team-fotos{margin:0}
-.team-fotos img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:60% 40%;border-radius:6px}
-.team-fotos figcaption{font-size:.86rem;color:var(--grau);padding-top:.4rem}
-
-/* Fusion: Überschrift zwischen Himmel und Haus */
-.fusion{background:var(--marine);color:#fff}
-.plakat{position:relative;height:62.5vw;overflow:hidden;background:#96a9c6;isolation:isolate}
-.ebene{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 100%}
-.ebene-haus{z-index:2;pointer-events:none}
-.plakat h2{position:absolute;z-index:1;left:var(--rand);bottom:39.2vw;font-size:8.7vw;line-height:.99;letter-spacing:-.03em;color:var(--marine)}
-.plakat h2 span{display:block;white-space:nowrap}
-.fusion-text{padding:1rem var(--rand) clamp(2.6rem,5.6vw,4.6rem)}
-.fusion-quelle{font-size:.86rem;margin-bottom:clamp(1.4rem,3vw,2.4rem)}
-.fusion-spalten{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:1.2rem clamp(2rem,6vw,6rem);align-items:center}
-.fusion-spalten p{font-size:clamp(1.15rem,1.7vw,1.5rem);line-height:1.35;font-weight:600;margin:0}
-.fusion-spalten .knopf{justify-self:start;min-height:60px;font-size:1.08rem}
+/* Fusion */
+.fusion{background:var(--marine);color:#fff;overflow:hidden}
+.fusion>img{width:100%;aspect-ratio:2000/951;object-fit:cover}
+.fusion-text{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:1.4rem clamp(2rem,6vw,6rem);align-items:start;padding:clamp(2rem,4.6vw,4rem) var(--rand) clamp(2.6rem,5.6vw,4.6rem)}
+.fusion-quelle{font-size:.82rem;color:#d7deea;margin:.8rem 0 0}
+.fusion-text p{font-size:1.08rem}
 
 /* Hausarztprogramm */
 .hzv{background:var(--himmel);display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:1.6rem clamp(2rem,6vw,6rem);align-items:center;padding:clamp(3rem,6.4vw,5.4rem) var(--rand)}
@@ -171,19 +192,6 @@ h1{font-size:clamp(2.6rem,5.8vw,5.4rem);letter-spacing:-.028em;margin-bottom:cla
 .danke{grid-column:2;background:var(--himmel);border-radius:14px;padding:1.6rem}
 .danke h3{font-size:2rem;margin-bottom:.4rem}
 
-/* Auswahl: Bei wem sind Sie Patient? */
-.wahl{border:0;padding:clamp(1.4rem,3vw,2.6rem);width:min(44rem,calc(100vw - 24px));max-height:calc(100dvh - 24px);border-radius:14px;color:var(--marine)}
-.wahl::backdrop{background:rgba(20,32,68,.62)}
-.wahl[open]{animation:wahl-auf .22s ease-out}
-@keyframes wahl-auf{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.wahl h2{font-size:clamp(1.8rem,3.4vw,2.8rem);margin:0 5rem 1.1rem 0}
-.wahl-zu{position:absolute;right:clamp(1rem,2.4vw,2rem);top:clamp(1rem,2.4vw,2rem)}
-.wahl-zu button{font:inherit;font-weight:700;font-size:.9rem;background:none;border:0;min-height:44px;color:var(--marine);text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
-.wahl-namen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
-.wahl-namen button{font:inherit;font-size:1.15rem;font-weight:700;text-align:left;color:var(--marine);background:var(--himmel);border:0;border-radius:10px;min-height:68px;padding:.5rem 1rem;cursor:pointer;transition:background .2s,color .2s}
-.wahl-namen button:hover{background:var(--klinker);color:#fff}
-.wahl-neu{margin:1rem 0 .2rem;font-weight:700}
-
 /* Fuß */
 .fuss{color:#fff;font-size:.95rem}
 .fuss-innen{background:var(--marine);padding:2.6rem var(--rand) 1.6rem}
@@ -192,13 +200,16 @@ h1{font-size:clamp(2.6rem,5.8vw,5.4rem);letter-spacing:-.028em;margin-bottom:cla
 
 /* Unterseiten */
 .seite{padding:clamp(2.4rem,6vw,4.4rem) var(--rand) clamp(3rem,6vw,5rem);max-width:60rem}
+.seite.breit{max-width:none}
 .seite h1{font-size:clamp(2.4rem,5.4vw,4.4rem);margin-bottom:1rem}
 .seite h2{font-size:clamp(1.5rem,2.8vw,2.1rem);margin:2.4rem 0 .6rem}
 .seite h3{font-size:1.2rem;margin:1.2rem 0 .3rem}
+.einleitung{font-size:1.15rem;max-width:40rem}
 .zurueck{display:inline-flex;min-height:44px;align-items:center;font-weight:700;margin-bottom:.6rem}
 .vorab{background:var(--himmel);padding:.9rem 1.1rem;border-radius:12px;margin:1rem 0 1.6rem}
 .warnung{background:#fff;border:3px solid var(--klinker);padding:.8rem 1rem;border-radius:12px;margin:.8rem 0}
-.liste li{padding:.28rem 0}
+.liste li{padding:.28rem 0 .28rem 1.1rem;position:relative}
+.liste li::before{content:"";position:absolute;left:0;top:.95em;width:.55rem;height:2px;background:var(--klinker)}
 .zwei{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 3rem}
 .fragebogen{background:var(--himmel);border-radius:14px;padding:1.2rem clamp(1rem,2.4vw,1.8rem) 1.4rem;margin:1.2rem 0 1.8rem}
 .fragebogen fieldset{border:0;margin:0 0 1rem;padding:0}
@@ -216,33 +227,83 @@ h1{font-size:clamp(2.6rem,5.8vw,5.4rem);letter-spacing:-.028em;margin-bottom:cla
 .leitfaden .knopf{margin:.2rem .3rem .3rem 0}
 .bitte-waehlen{font-weight:700}
 
+/* Leistungsseite */
+.leistung-kopf{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:1.4rem clamp(2rem,5vw,5rem);align-items:end;margin-bottom:clamp(1.6rem,3vw,2.6rem)}
+.leistung-kopf figure{margin:0}
+.leistung-kopf img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:8px}
+.leistung-kopf figcaption,.bildzeile{font-size:.82rem;color:var(--grau);padding-top:.35rem}
+.leistung-raster{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:1rem clamp(2rem,5vw,5rem);align-items:start}
+.kasten{background:var(--himmel);border-radius:14px;padding:1.2rem 1.4rem 1rem}
+.kasten h2{margin-top:0!important;font-size:1.25rem!important}
+.kasten .knopf{margin-top:.5rem}
+.fakt{display:grid;grid-template-columns:7rem minmax(0,1fr);gap:.2rem 1rem;padding:.55rem 0;border-top:1px solid rgba(20,32,68,.15)}
+.fakt dt{font-weight:800}
+.fakt dd{margin:0}
+.weitere{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:1rem}
+.weitere a{display:block;text-decoration:none;font-weight:700}
+.weitere img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:6px;margin-bottom:.4rem}
+
+/* Standorte */
+.standorte{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem clamp(1.4rem,3vw,3rem);margin:2rem 0 3rem}
+.standort{background:var(--himmel);border-radius:14px;padding:1.4rem clamp(1.2rem,2.4vw,2rem) 1.2rem}
+.standort h2{margin:0 0 .3rem!important}
+.standort-art{font-size:.86rem;font-weight:700;color:var(--grau);margin:0}
+.standort .status{color:var(--marine);margin-bottom:.8rem}
+.standort .punkt{background:#9aa6ba}
+.standort .status.offen .punkt{background:var(--gruen)}
+.standort .status.pause .punkt{background:#b57a00}
+.standort .status.zu .punkt{background:var(--rot)}
+.standort-bild{margin:0 0 1.6rem}
+.standort-bild img{width:100%;aspect-ratio:2000/951;object-fit:cover;border-radius:8px}
+.standort-bild figcaption{font-size:.82rem;color:var(--grau);padding-top:.35rem}
+
+/* Teamseite */
+.team-seite .personen{grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem clamp(1.4rem,3vw,3rem)}
+.team-seite .personen li{font-size:1rem}
+.team-seite .personen strong{font-size:1.35rem}
+.team-seite .personen .portrait{max-width:320px}
+.team-seite .personen .rolle{display:block}
+.mitarbeiter{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1.2rem}
+.mitarbeiter li{font-size:.9rem;color:var(--grau);line-height:1.35;min-width:0;overflow-wrap:anywhere}
+.mitarbeiter strong{display:block;color:var(--marine);margin-top:.5rem}
+.namen{columns:2;column-gap:3rem;max-width:50rem}
+.namen li{break-inside:avoid;padding:.3rem 0;border-bottom:1px solid var(--himmel);overflow-wrap:anywhere}
+.namen strong{display:block}
+.namen span{font-size:.9rem;color:var(--grau)}
+.einblicke{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.einblicke img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px}
+
 /* Hoher Kontrast */
 html.kontrast{--himmel:#fff;--marine:#000;--klinker:#000;--grau:#000}
-html.kontrast .plakat h2{background:#fff;padding:.1em .2em}
-html.kontrast .chips span,html.kontrast .ansicht button,html.kontrast .ansicht a,html.kontrast .wahl-namen button,html.kontrast .fragebogen{border:2px solid #000}
+html.kontrast .plakat h1,html.kontrast .empfang-text{background:#fff;padding:.1em .2em}
+html.kontrast .chips span,html.kontrast .ansicht button,html.kontrast .ansicht a,html.kontrast .fragebogen,html.kontrast .kasten,html.kontrast .portrait.leer{border:2px solid #000}
 
 /* Vorschau nach dem Umzug */
 .nach-umzug .vor-umzug{display:none!important}
-.nach-umzug .team-namen{grid-template-columns:minmax(0,1fr)}
 .nach-umzug #umzug{display:none}
 
-/* Bewegung: Der Satz steigt beim Scrollen hinter dem Dach auf. Nichts wartet auf eine Laufzeit. */
-@media (prefers-reduced-motion:no-preference){
-  @supports (animation-timeline:view()){
-    html:not(.ruhe):not(.kontrast) .plakat h2{animation:steigt linear both;animation-timeline:view();animation-range:entry 10% cover 46%}
-    @keyframes steigt{from{transform:translateY(62%)}to{transform:none}}
-  }
-}
+/* Bewegung: ein Auftakt beim Laden, sonst nur auf Berührung */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none!important}
-  .wahl[open]{animation:none}
+  .js .plakat h1 span{animation:none}
 }
 html.ruhe{scroll-behavior:auto}
 html.ruhe *{transition:none!important}
-html.ruhe .wahl[open]{animation:none}
+html.ruhe .plakat h1 span{animation:none}
 
 /* Schmale Fenster */
+@media (max-width:1199px){
+  .plakat{height:auto;padding-top:62.5vw;background:#fff}
+  .plakat .ebene{height:62.5vw;bottom:auto}
+  .plakat h1{top:7vw;bottom:auto}
+  .empfang-text{position:static;width:auto;padding:1.4rem var(--rand) 0;background:#fff}
+  .empfang-zeile{font-size:1.15rem}
+  .empfang-unten{grid-template-columns:minmax(0,1fr);padding-top:.8rem}
+  .plakat-quelle{text-align:left}
+  .personen{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mitarbeiter{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 @media (max-width:1040px){
   .kopf-innen{flex-wrap:wrap}
   .marke{flex:1 1 0;min-width:0}
@@ -254,26 +315,32 @@ html.ruhe .wahl[open]{animation:none}
   .menue a{padding:.6em 0;font-size:1.05rem}
 }
 @media (max-width:899px){
-  .anmeldung{grid-template-columns:minmax(0,1fr);min-height:0}
-  .aufgaben{padding:1.3rem var(--rand) 1.6rem}
+  .plakat{padding-top:100vw}
+  .plakat .ebene{height:100vw}
+  .plakat h1{top:14vw;font-size:8.4vw}
+  .plakat h1 span{white-space:normal}
+  .empfang-knoepfe .knopf{flex:1 1 100%}
+  .service,.abschnitt-kopf,.zu-raster,.fragen-abschnitt,.fusion-text,.hzv,.stellen,.kontakt,.leistung-kopf,.leistung-raster{grid-template-columns:minmax(0,1fr)}
+  .aufgaben{padding:0 var(--rand) 1.6rem}
   .aufgabe{padding-top:.75rem;padding-bottom:.75rem}
   .tafel{padding:1.5rem var(--rand) 1.7rem}
-  .tafel-foto{display:none}
-  .plakat{height:100vw}
-  .plakat h2{bottom:auto;top:18.6vw;font-size:14.2vw}
-  .plakat h2 span{white-space:normal;max-width:8.4em}
-  .zu-raster,.hilfe,.team,.fusion-spalten,.hzv,.stellen,.kontakt{grid-template-columns:minmax(0,1fr)}
-  .team{padding-top:0}
+  .leistungs-raster{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fusion>img{aspect-ratio:16/11}
   .danke{grid-column:1}
   .hzv-zahl span{font-size:clamp(6rem,30vw,12rem)}
+  .team-seite .personen{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .standorte{grid-template-columns:minmax(0,1fr)}
+  .einblicke{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .weitere{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
   .marke svg{display:none}
-  .felder,.zwei,.team-namen{grid-template-columns:minmax(0,1fr)}
-  .wahl-namen{grid-template-columns:minmax(0,1fr)}
-  .wahl-namen button{min-height:60px}
+  .felder,.zwei,.leistungs-raster{grid-template-columns:minmax(0,1fr)}
+  .personen,.mitarbeiter{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .namen{columns:1}
   .fuss-spalten{grid-template-columns:minmax(0,1fr)}
   .leitfaden>li{grid-template-columns:minmax(0,1fr)}
   .leitfaden>li::before{font-size:2.5rem;margin-bottom:.2rem}
+  .fakt{grid-template-columns:minmax(0,1fr);gap:0}
 }
 @media print{.kopf{display:none}}
