@@ -71,7 +71,7 @@ html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3
 .plakat{position:relative;height:62.5vw;overflow:hidden;background:#96a9c6;isolation:isolate}
 .ebene{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 100%}
 .ebene-haus{z-index:2;pointer-events:none}
-.plakat h1{position:absolute;z-index:1;left:var(--rand);bottom:39.6vw;font-size:6.3vw;line-height:1;letter-spacing:-.03em;color:var(--marine);margin:0}
+.plakat h1{position:absolute;z-index:1;left:var(--rand);bottom:45.5vw;font-size:5.2vw;line-height:1;letter-spacing:-.03em;color:var(--marine);margin:0}
 .plakat h1 span{display:block;white-space:nowrap}
 .js .plakat h1 span{animation:steigt .6s cubic-bezier(.2,.7,.2,1) both}
 .js .plakat h1 span+span{animation-delay:.08s}
@@ -185,6 +185,9 @@ html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3
 .chips input:checked+span{background:var(--marine);color:#fff}
 .chips input:focus-visible+span{outline:3px solid var(--marine);outline-offset:3px}
 .felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-bottom:.6rem}
+.feld-breit{grid-column:1/-1}
+.feld textarea{width:100%;font:inherit;color:var(--marine);background:#fff;border:2px solid var(--marine);border-radius:10px;padding:.5em .7em;min-height:7rem;resize:vertical}
+.feld textarea::placeholder,.feld input::placeholder{color:#6b7385}
 .feld input{width:100%;font:inherit;color:var(--marine);background:#fff;border:2px solid var(--marine);border-radius:10px;padding:.5em .7em;min-height:52px}
 .feld input[type=file]{padding:.55em;font-size:.9rem}
 .hinweis{font-size:.9rem;color:var(--grau)}
@@ -317,7 +320,7 @@ html.ruhe .plakat h1 span{animation:none}
 @media (max-width:899px){
   .plakat{padding-top:100vw}
   .plakat .ebene{height:100vw}
-  .plakat h1{top:14vw;font-size:8.4vw}
+  .plakat h1{top:10vw;font-size:8vw}
   .plakat h1 span{white-space:normal}
   .empfang-knoepfe .knopf{flex:1 1 100%}
   .service,.abschnitt-kopf,.zu-raster,.fragen-abschnitt,.fusion-text,.hzv,.stellen,.kontakt,.leistung-kopf,.leistung-raster{grid-template-columns:minmax(0,1fr)}
