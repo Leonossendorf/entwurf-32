@@ -8,9 +8,9 @@
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/atkinson-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=8">
-<script>window.STAND="8";</script>
-<script src="js/main.js?v=8" defer></script>
+<link rel="stylesheet" href="css/style.css?v=9">
+<script>window.STAND="9";</script>
+<script src="js/main.js?v=9" defer></script>
 </head>
 <body>
 <a class="sprung" href="#inhalt">Zum Inhalt springen</a>
@@ -33,10 +33,6 @@
       <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="6.6" r="1.7" fill="currentColor"/><path d="M5.8 9.6c2 .7 4.1 1 6.2 1s4.2-.3 6.2-1M12 10.8v4.2M12 15l-2.7 4.8M12 15l2.7 4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
       <span>Ansicht anpassen</span>
     </button>
-  </div>
-  <div class="vorschau-band" data-vorschau-band hidden>
-    <p>Vorschau: So sieht die Website nach dem Umzug aus. Anschrift, Rufnummer und Terminwege sind Vorschläge, bis die Praxis sie festlegt.</p>
-    <button type="button" data-vorschau>Zurück zu heute</button>
   </div>
   <section id="ansicht" class="ansicht" aria-label="Ansicht anpassen" hidden>
     <div class="ansicht-innen">
@@ -78,12 +74,11 @@
     </picture>
     <div class="empfang-text">
       <p class="empfang-zeile">Sechs Ärztinnen und Ärzte, ein Team, für alle Anliegen in Metelen.</p>
-      <p class="empfang-knoepfe"><a class="knopf knopf-voll" href="#service">Termin und Rezept</a> <a class="knopf knopf-rand" href="standorte.html" data-heute>Standorte &amp; Umzug</a><a class="knopf knopf-rand" href="leistungen.html" data-zukunft hidden>Unsere Leistungen</a></p>
+      <p class="empfang-knoepfe"><a class="knopf knopf-voll" href="#service">Termin und Rezept</a> <a class="knopf knopf-rand" href="standorte.html">Standorte &amp; Umzug</a></p>
     </div>
   </div>
   <div class="empfang-unten">
-    <p class="empfang-satz" data-heute>Von der Kindervorsorge bis zur Palliativmedizin, von der Grippeimpfung bis zum Check-up. Heute an zwei Standorten, ab 2027 gemeinsam unter einem Dach im Neuen Postquartier. Wir sind vorbereitet.</p>
-    <p class="empfang-satz" data-zukunft hidden>Von der Kindervorsorge bis zur Palliativmedizin, von der Grippeimpfung bis zum Check-up. Jetzt gemeinsam unter einem Dach im Neuen Postquartier, mitten in Metelen.</p>
+    <p class="empfang-satz">Von der Kindervorsorge bis zur Palliativmedizin, von der Grippeimpfung bis zum Check-up. Eine Praxis, heute an zwei Standorten in Metelen, ab 2027 gemeinsam im Neuen Postquartier.</p>
     <p class="plakat-quelle">Visualisierung des neuen Praxisgebäudes, kein Foto. Quelle: Maletz &amp; Hoffstedde.</p>
   </div>
 </section>
@@ -91,8 +86,7 @@
 <section id="service" class="service" aria-labelledby="h-service">
   <div class="aufgaben">
     <h2 id="h-service">Termin, Rezept, Überweisung</h2>
-    <p class="service-zeile" data-heute>Alles geht online, rund um die Uhr. Die Anleitungen führen Sie Schritt für Schritt zum Kalender oder Formular Ihres Standorts.</p>
-    <p class="service-zeile" data-zukunft hidden>Alles geht online, rund um die Uhr: ein Kalender, ein Formular, für alle Patientinnen und Patienten der Praxis.</p>
+    <p class="service-zeile">Alles geht online, rund um die Uhr. Die Anleitungen führen Sie Schritt für Schritt zum Kalender oder Formular Ihres Standorts.</p>
     <ul class="aufgaben-liste">
       <li><a class="aufgabe" href="hilfe-termin.html"><span class="aufgabe-name">Termin</span><span class="aufgabe-zusatz">online buchen</span></a></li>
       <li><a class="aufgabe" href="hilfe-rezept.html"><span class="aufgabe-name">Rezept</span><span class="aufgabe-zusatz">online bestellen</span></a></li>
@@ -101,23 +95,17 @@
     </ul>
   </div>
   <div class="tafel" role="group" aria-label="Geöffnet oder geschlossen">
-    <article class="tafel-ort vor-umzug" data-tafel="w">
+    <article class="tafel-ort" data-tafel="w">
       <h3>Wettringener Straße 2</h3>
       <p class="status" data-status="w"><span class="punkt" aria-hidden="true"></span><span class="status-text">Sprechzeiten siehe unten</span></p>
       <p class="tafel-zeiten">Mo, Di, Do 7:30 bis 12 und 14 bis 17 Uhr<br>Mi, Fr 7:30 bis 12 Uhr</p>
       <p><a class="tafel-tel" href="tel:+4925569396-0">02556 9396-0</a></p>
     </article>
-    <article class="tafel-ort vor-umzug" data-tafel="s">
+    <article class="tafel-ort" data-tafel="s">
       <h3>Schilden 4</h3>
       <p class="status" data-status="s"><span class="punkt" aria-hidden="true"></span><span class="status-text">Sprechzeiten siehe unten</span></p>
       <p class="tafel-zeiten">Mo, Di, Do 7:30 bis 12 und 15 bis 18 Uhr<br>Mi, Fr 7:30 bis 13 Uhr</p>
       <p><a class="tafel-tel" href="tel:+492556278">02556 278</a></p>
-    </article>
-    <article class="tafel-ort nach-umzug-block" hidden>
-      <h3>Neues Postquartier</h3>
-      <p class="status"><span class="punkt" aria-hidden="true"></span><span class="status-text">Eine Adresse für alle</span></p>
-      <p class="tafel-zeiten">Anschrift und Sprechzeiten folgen zum Umzug. Die Rufnummer ist ein Vorschlag.</p>
-      <p><a class="tafel-tel" href="tel:+4925569396-0">02556 9396-0</a></p>
     </article>
     <p class="tafel-fuss"><a href="standorte.html">Standorte und Anfahrt</a> · <a href="#geschlossen">Wenn Praxis und Telefon zu sind</a></p>
   </div>
@@ -212,12 +200,12 @@
   <img src="img/ecke-2000.webp" srcset="img/ecke-1000.webp 1000w, img/ecke-2000.webp 2000w" sizes="100vw" width="2000" height="951" loading="lazy" alt="Visualisierung des Neuen Postquartiers an der Straßenecke, mit jungen Bäumen und Fußgängern.">
   <div class="fusion-text">
     <div>
-      <h2 id="h-fusion">2027 unter einem Dach. Wir sind vorbereitet.</h2>
+      <h2 id="h-fusion">2027 unter einem Dach</h2>
       <p class="fusion-quelle">Visualisierung, kein Foto. Quelle: Maletz &amp; Hoffstedde.</p>
     </div>
     <div>
-      <p>Seit dem 01.01.2026 sind die beiden Hausarztpraxen in Metelen eine Praxis. Bis zum Umzug kommen Sie bitte weiter in Ihre bisherige Praxis. Am Umzugstag reicht ein Klick: ein Kalender, eine Nummer, eine Adresse.</p>
-      <p><button class="knopf knopf-hell" type="button" data-vorschau>Vorschau: Website nach dem Umzug</button> <a class="knopf knopf-rand" href="standorte.html">Standorte &amp; Umzug</a></p>
+      <p>Seit dem 01.01.2026 sind wir eine Praxis: sechs Ärztinnen und Ärzte an zwei Standorten in Metelen, an der Wettringener Straße und am Schilden. 2027 ziehen wir gemeinsam in das Neue Postquartier im Ortskern. Bis dahin finden Sie Ihre Ärztin oder Ihren Arzt am gewohnten Ort.</p>
+      <p><a class="knopf knopf-hell" href="standorte.html">Standorte &amp; Umzug</a></p>
     </div>
   </div>
 </section>
@@ -301,8 +289,8 @@
 <footer class="fuss">
   <div class="fuss-innen">
     <div class="fuss-spalten">
-      <p><strong>Hausarztpraxis Metelen</strong><br>Wettringener Straße 2<br>48629 Metelen<br><a href="tel:+4925569396-0">02556 9396-0</a></p>
-      <p class="vor-umzug"><strong>Zweigpraxis Ärzte am Schilden</strong><br>Schilden 4<br>48629 Metelen<br><a href="tel:+492556278">02556 278</a></p>
+      <p><strong>Standort Wettringener Straße</strong><br>Wettringener Straße 2<br>48629 Metelen<br><a href="tel:+4925569396-0">02556 9396-0</a></p>
+      <p><strong>Standort Schilden</strong><br>Schilden 4<br>48629 Metelen<br><a href="tel:+492556278">02556 278</a></p>
       <p><a href="leistungen.html">Leistungen</a><br><a href="team.html">Team</a><br><a href="praxis.html">Anfahrt und Zeiten</a><br><a href="impressum.html">Impressum</a><br><a href="datenschutz.html">Datenschutz</a><br><a href="barrierefreiheit.html">Barrierefreiheit</a><br><a href="leichte-sprache.html">Leichte Sprache</a></p>
     </div>
     <p class="fuss-hinweis">Unverbindlicher Entwurf von Leon Oßendorf, kein offizieller Auftritt der Hausarztpraxis Metelen. Visualisierungen: Maletz &amp; Hoffstedde. Fotos: Ärzte am Schilden. Beispielbilder: Unsplash (National Cancer Institute, CDC, Bermix Studio, Joachim Schnürle, Benjamin Wedemeyer, Junior Reis).</p>

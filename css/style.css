@@ -63,9 +63,6 @@ html.links main a,html.links .fuss a{font-weight:700;text-decoration-thickness:3
 .ansicht-titel{width:100%;font-size:.8rem;font-weight:700;color:var(--grau)}
 .ansicht button,.ansicht a{font:inherit;font-size:.86rem;min-height:44px;padding:.35em .9em;background:var(--himmel);color:var(--marine);border:0;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
 .ansicht button[aria-pressed=true]{background:var(--marine);color:#fff}
-.vorschau-band{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.4rem;background:var(--klinker);color:#fff;padding:.5rem var(--rand)}
-.vorschau-band p{margin:0;font-weight:700}
-.vorschau-band button{font:inherit;font-weight:700;background:#fff;color:var(--klinker);border:0;border-radius:999px;min-height:44px;padding:.2em 1.1em;cursor:pointer}
 
 /* Empfang: Haus als erstes Bild, der Gruß steht zwischen Himmel und Dach */
 .plakat{position:relative;height:62.5vw;overflow:hidden;background:#96a9c6;isolation:isolate}
@@ -281,9 +278,6 @@ html.kontrast{--himmel:#fff;--marine:#000;--klinker:#000;--grau:#000}
 html.kontrast .plakat h1,html.kontrast .empfang-text{background:#fff;padding:.1em .2em}
 html.kontrast .chips span,html.kontrast .ansicht button,html.kontrast .ansicht a,html.kontrast .fragebogen,html.kontrast .kasten,html.kontrast .portrait.leer{border:2px solid #000}
 
-/* Vorschau nach dem Umzug */
-.nach-umzug .vor-umzug{display:none!important}
-.nach-umzug #umzug{display:none}
 
 /* Bewegung: ein Auftakt beim Laden, sonst nur auf Berührung */
 @media (prefers-reduced-motion:reduce){

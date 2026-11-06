@@ -128,27 +128,6 @@
   }
   try { zeigeStatus(); setInterval(zeigeStatus, 60000); } catch (e) {}
 
-  /* Vorschau: dieselbe Website nach dem Umzug. Gilt für den Besuch auf allen Seiten.
-     Direkt einsteigen: index.html?vorschau */
-  var band = document.querySelector("[data-vorschau-band]");
-  function vorschauSetzen(an) {
-    html.classList.toggle("nach-umzug", an);
-    if (band) band.hidden = !an;
-    alle(".nach-umzug-block, [data-zukunft]").forEach(function (el) { el.hidden = !an; });
-    alle("[data-heute]").forEach(function (el) { el.hidden = an; });
-    try { if (an) sessionStorage.setItem("hm-vorschau", "1"); else sessionStorage.removeItem("hm-vorschau"); } catch (e) {}
-  }
-  var vorschauAktiv = /[?&#]vorschau/.test(location.search + location.hash);
-  try { if (!vorschauAktiv && sessionStorage.getItem("hm-vorschau") === "1") vorschauAktiv = true; } catch (e) {}
-  if (vorschauAktiv) vorschauSetzen(true);
-  alle("[data-vorschau]").forEach(function (k) {
-    k.addEventListener("click", function () {
-      var an = !html.classList.contains("nach-umzug");
-      vorschauSetzen(an);
-      var umzug = document.getElementById("umzug");
-      window.scrollTo({ top: an || !umzug ? 0 : umzug.getBoundingClientRect().top + window.scrollY - 80, behavior: "auto" });
-    });
-  });
 
   /* Formular mit Weichen */
   var form = document.querySelector("[data-formular]");
